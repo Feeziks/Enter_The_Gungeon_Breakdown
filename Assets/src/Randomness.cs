@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Randomness
 {
-    
     #region SINGLETON
 
 
@@ -38,6 +37,25 @@ public class Randomness
         for(int i = 0; i < num; i++)
         {
             randomNumbers.Add(Random.Range(min, max));
+        }
+    }
+
+    public void CSharpRandom(int num, float min, float max, ref List<float> randomNumbers)
+    {
+        //Clear the list of any data from before
+        randomNumbers.Clear();
+
+        //Create an instance of the random class
+        System.Random rand = new System.Random();
+
+        for(int i = 0; i < num; i++)
+        {
+            //Get a random floating value between 0.0 and 1.0
+            float thisNum = (float)rand.NextDouble();
+            
+            //Shift the value to fit between the passed min and max
+            thisNum = min + (thisNum * (( max - min ) + 1 ));
+            randomNumbers.Add(thisNum);
         }
     }
 }
