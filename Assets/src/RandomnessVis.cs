@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
 public class RandomnessVis : MonoBehaviour
 {
     public TMP_InputField numberToGenerate;
+    public TMP_InputField rangeMinimum;
+    public TMP_InputField rangeMaximum;
+
+    public Toggle roundingToggle;
+    public TMP_Dropdown roundingPlaces;
+
     public GameObject windowGraph;
     private Window_Graph wg;
-
-    public int decimalPlaceRound;
 
     public void PrintList<T>(IEnumerable<T> l)
     {
@@ -23,17 +28,48 @@ public class RandomnessVis : MonoBehaviour
         wg.Clear();
     }
 
-    private int GetUserInput()
+    private int UserInputToInt(string input)
     {
-        //Get the user input number
-        string str = numberToGenerate.text;
-        if(string.IsNullOrEmpty(str))
+        if(string.IsNullOrEmpty(input))
         {
-            Debug.Log("No number was input");
+            Debug.Log("No input!");
             return -1;
         }
-        int numToGen = System.Convert.ToInt32(str);
-        return numToGen;
+
+        return System.Convert.ToInt32(input);
+    }
+
+    private int UserInputToInt(TMP_InputField input)
+    {
+        //Get the user input number
+        string str = input.text;
+        if(string.IsNullOrEmpty(str))
+        {
+            Debug.Log("No input!");
+            return -1;
+        }
+        return System.Convert.ToInt32(str);
+    }
+
+    private float UserInputToFloat(string input)
+    {
+        if(string.IsNullOrEmpty(input))
+        {
+            Debug.Log("No Input!");
+            return -1;
+        }
+        return System.Convert.ToSingle(input);
+    }
+
+    private float UserInputToFloat(TMP_InputField input)
+    {
+        string str = input.text;
+        if(string.IsNullOrEmpty(str))
+        {
+            Debug.Log("No Input!");
+            return -1;
+        }
+        return System.Convert.ToSingle(str);
     }
 
     private void RoundToDecimalPlaces(ref List<float> randomNumbers, int decimalPlaces)
@@ -97,14 +133,22 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = GetUserInput();
-        if(numToGen == -1)
+        int numToGen = UserInputToInt(numberToGenerate);
+        float minRange = UserInputToFloat(rangeMinimum);
+        float maxRange = UserInputToFloat(rangeMaximum);
+
+        if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
 
         List<float> unityRandomRangeNumbers = new List<float>();
-        Randomness.Instance.UnityRandom(numToGen, 0.0f, 1.0f, ref unityRandomRangeNumbers);
-        //Mild rounding to make it easier
-        RoundToDecimalPlaces(ref unityRandomRangeNumbers, decimalPlaceRound);
+        Randomness.Instance.UnityRandom(numToGen, minRange, maxRange, ref unityRandomRangeNumbers);
+        
+        if(roundingToggle.isOn)
+        {
+            //Mild rounding to make it easier
+            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            RoundToDecimalPlaces(ref unityRandomRangeNumbers, decimalPlaceRound);
+        }
         //Sort the list
         unityRandomRangeNumbers.Sort();
 
@@ -114,7 +158,7 @@ public class RandomnessVis : MonoBehaviour
         List<Vector2> counts = CountOccurences(unityRandomRangeNumbers, ref minCount, ref maxCount);
 
         //plot that count vs the value
-        wg.Graph(counts, new Vector2(0.0f, 1.0f), new Vector2(minCount, maxCount));
+        wg.Graph(counts, new Vector2(minRange, maxRange), new Vector2(minCount, maxCount));
     }
 
     public void CSharpRandom()
@@ -128,20 +172,29 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = GetUserInput();
-        if(numToGen == -1)
+        int numToGen = UserInputToInt(numberToGenerate);
+        float minRange = UserInputToFloat(rangeMinimum);
+        float maxRange = UserInputToFloat(rangeMaximum);
+
+        if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
 
         List<float> cSharpRandomNumbers = new List<float>();
-        Randomness.Instance.CSharpRandom(numToGen, 0.0f, 1.0f, ref cSharpRandomNumbers);
-        RoundToDecimalPlaces(ref cSharpRandomNumbers, decimalPlaceRound);
+        Randomness.Instance.CSharpRandom(numToGen, minRange, maxRange, ref cSharpRandomNumbers);
+
+        if(roundingToggle.isOn)
+        {
+            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            RoundToDecimalPlaces(ref cSharpRandomNumbers, decimalPlaceRound);
+        }
+
         cSharpRandomNumbers.Sort();
 
         int minCount = System.Int32.MaxValue;
         int maxCount = System.Int32.MinValue;
         List<Vector2> counts = CountOccurences(cSharpRandomNumbers, ref minCount, ref maxCount);
 
-        wg.Graph(counts, new Vector2(0.0f, 1.0f), new Vector2(minCount, maxCount));
+        wg.Graph(counts, new Vector2(minRange, maxRange), new Vector2(minCount, maxCount));
     }
 
     public void ChiSquareRandom()
@@ -155,8 +208,11 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = GetUserInput();
-        if(numToGen == -1)
+        int numToGen = UserInputToInt(numberToGenerate);
+        float minRange = UserInputToFloat(rangeMinimum);
+        float maxRange = UserInputToFloat(rangeMaximum);
+
+        if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
 
         List<float> chiSquareRandomNumbers = new List<float>();
@@ -166,9 +222,15 @@ public class RandomnessVis : MonoBehaviour
         for(int i = 0; i < chiSquareRandomNumbers.Count; i++)
         {
             chiSquareRandomNumbers[i] *= chiSquareRandomNumbers[i];
+            //Values are still between 0.0f and 1.0f, need to scale them to min and max values
+            chiSquareRandomNumbers[i] = minRange + (chiSquareRandomNumbers[i] * (( maxRange - minRange ) + 1.0f ));
         }
 
-        RoundToDecimalPlaces(ref chiSquareRandomNumbers, decimalPlaceRound);
+        if(roundingToggle.isOn)
+        {
+            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            RoundToDecimalPlaces(ref chiSquareRandomNumbers, decimalPlaceRound);
+        }
         chiSquareRandomNumbers.Sort();
 
         int minCount = System.Int32.MaxValue;
@@ -176,6 +238,44 @@ public class RandomnessVis : MonoBehaviour
         List<Vector2> counts = CountOccurences(chiSquareRandomNumbers, ref minCount, ref maxCount);
 
         wg.Graph(counts, new Vector2(0.0f, 1.0f), new Vector2(minCount, maxCount));
+    }
+
+    public void GaussianRandom()
+    {
+        wg = windowGraph.GetComponent<Window_Graph>();
+        if(wg == null)
+        {
+            Debug.Log("wg is null");
+            return;
+        }
+
+        Clear(wg);
+
+        int numToGen = UserInputToInt(numberToGenerate);
+        float mean = UserInputToFloat(rangeMinimum);
+        float stdDev = UserInputToFloat(rangeMaximum);
+
+        if(numToGen == -1 || mean == -1 || stdDev == -1)
+            return;
+
+        List<float> standardDistributionRandomNumbers = new List<float>();
+        Randomness.Instance.GaussianRandom(numToGen, mean, stdDev, ref standardDistributionRandomNumbers);
+
+        if(roundingToggle.isOn)
+        {
+            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            RoundToDecimalPlaces(ref standardDistributionRandomNumbers, decimalPlaceRound);
+        }
+
+        standardDistributionRandomNumbers.Sort();
+
+        int minCount = System.Int32.MaxValue;
+        int maxCount = System.Int32.MinValue;
+        List<Vector2> counts = CountOccurences(standardDistributionRandomNumbers, ref minCount, ref maxCount);
+
+        wg.Graph(counts, new Vector2(mean + stdDev * -3.0f, mean + stdDev * 3.0f), new Vector2(minCount, maxCount));
+
+
     }
 
 }
