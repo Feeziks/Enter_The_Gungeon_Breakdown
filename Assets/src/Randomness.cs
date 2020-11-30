@@ -54,7 +54,7 @@ public class Randomness
             float thisNum = (float)SysRand.NextDouble();
             
             //Shift the value to fit between the passed min and max
-            thisNum = min + (thisNum * (( max - min ) + 1 ));
+            thisNum = min + (thisNum * (( max - min )));
             randomNumbers.Add(thisNum);
         }
     }

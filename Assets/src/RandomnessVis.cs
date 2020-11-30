@@ -216,14 +216,14 @@ public class RandomnessVis : MonoBehaviour
             return;
 
         List<float> chiSquareRandomNumbers = new List<float>();
-        Randomness.Instance.CSharpRandom(numToGen, 0.0f, 1.0f, ref chiSquareRandomNumbers);
+        Randomness.Instance.UnityRandom(numToGen, 0.0f, 1.0f, ref chiSquareRandomNumbers);
 
         //Square the values 
         for(int i = 0; i < chiSquareRandomNumbers.Count; i++)
         {
             chiSquareRandomNumbers[i] *= chiSquareRandomNumbers[i];
             //Values are still between 0.0f and 1.0f, need to scale them to min and max values
-            chiSquareRandomNumbers[i] = minRange + (chiSquareRandomNumbers[i] * (( maxRange - minRange ) + 1.0f ));
+            chiSquareRandomNumbers[i] = minRange + (chiSquareRandomNumbers[i] * (( maxRange - minRange )));
         }
 
         if(roundingToggle.isOn)
@@ -237,7 +237,7 @@ public class RandomnessVis : MonoBehaviour
         int maxCount = System.Int32.MinValue;
         List<Vector2> counts = CountOccurences(chiSquareRandomNumbers, ref minCount, ref maxCount);
 
-        wg.Graph(counts, new Vector2(0.0f, 1.0f), new Vector2(minCount, maxCount));
+        wg.Graph(counts, new Vector2(minRange, maxRange), new Vector2(minCount, maxCount));
     }
 
     public void GaussianRandom()
@@ -273,7 +273,7 @@ public class RandomnessVis : MonoBehaviour
         int maxCount = System.Int32.MinValue;
         List<Vector2> counts = CountOccurences(standardDistributionRandomNumbers, ref minCount, ref maxCount);
 
-        wg.Graph(counts, new Vector2(mean + stdDev * -3.0f, mean + stdDev * 3.0f), new Vector2(minCount, maxCount));
+        wg.Graph(counts, new Vector2(mean + stdDev * -4.0f, mean + stdDev * 4.0f), new Vector2(minCount, maxCount));
 
 
     }
