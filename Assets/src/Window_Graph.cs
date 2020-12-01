@@ -37,9 +37,14 @@ public class Window_Graph : MonoBehaviour
         GameObject lastPoint = null;
         GameObject thisPoint = null;
 
+        //Assuming that the passed list is sorted low to high
+        float minVal = vals[0].x;
+        float maxVal = vals[vals.Count - 1].x;
+        float scaler = graphWidth / (maxVal - minVal);
+
         foreach(Vector2 value in vals)
         {
-            float xPos = (value.x / xAxis[1]) * graphWidth;
+            float xPos = (value.x - minVal) * scaler;
             float yPos = (value.y / yAxis[1]) * graphHeight;
 
             thisPoint = CreatePoint(new Vector2(xPos, yPos));
@@ -53,16 +58,17 @@ public class Window_Graph : MonoBehaviour
             lastPoint = thisPoint;
         }
 
-        int axisLabelCount = (int)Mathf.Ceil(xAxis[1] - xAxis[0]);
+        int axisLabelCount = (int)Mathf.Ceil(xAxis[1]) - (int)Mathf.Floor(xAxis[0]);
         for(int i = 0; i <= axisLabelCount; i++)
         {
-            float normalizer = i * 1.0f / axisLabelCount;
             //Add X Axis Labels
-            float xPos = normalizer * graphWidth;
-            CreateXAxisLabel(xPos, (normalizer * xAxis[1]).ToString());
+            float normalizer = i * 1.0f / axisLabelCount;
+            float xPos = (normalizer * graphWidth);
+            CreateXAxisLabel(xPos, (minVal + i).ToString("0.#"));
+
             //Add Y Axis Labels
             float yPos = normalizer * graphHeight;
-            CreateYAxisLabel(yPos, (normalizer * yAxis[1]).ToString());
+            CreateYAxisLabel(yPos, (normalizer * yAxis[1]).ToString("0.#"));
         }
 
     }

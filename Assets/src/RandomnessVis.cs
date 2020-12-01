@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -16,6 +17,11 @@ public class RandomnessVis : MonoBehaviour
 
     public GameObject windowGraph;
     private Window_Graph wg;
+
+    public void ReturnToSceneSelection()
+    {
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
+    }
 
     public void PrintList<T>(IEnumerable<T> l)
     {
