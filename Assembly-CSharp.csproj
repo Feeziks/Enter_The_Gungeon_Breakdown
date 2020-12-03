@@ -58,7 +58,9 @@
      <Compile Include="Assets\src\RandomnessVis.cs" />
      <Compile Include="Assets\src\MenuHandler.cs" />
      <Compile Include="Assets\src\Window_Graph.cs" />
+     <Compile Include="Assets\src\ChestRarityTest.cs" />
      <Compile Include="Assets\src\Randomness.cs" />
+     <Compile Include="Assets\src\UI_Conversions.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

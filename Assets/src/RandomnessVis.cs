@@ -34,50 +34,6 @@ public class RandomnessVis : MonoBehaviour
         wg.Clear();
     }
 
-    private int UserInputToInt(string input)
-    {
-        if(string.IsNullOrEmpty(input))
-        {
-            Debug.Log("No input!");
-            return -1;
-        }
-
-        return System.Convert.ToInt32(input);
-    }
-
-    private int UserInputToInt(TMP_InputField input)
-    {
-        //Get the user input number
-        string str = input.text;
-        if(string.IsNullOrEmpty(str))
-        {
-            Debug.Log("No input!");
-            return -1;
-        }
-        return System.Convert.ToInt32(str);
-    }
-
-    private float UserInputToFloat(string input)
-    {
-        if(string.IsNullOrEmpty(input))
-        {
-            Debug.Log("No Input!");
-            return -1;
-        }
-        return System.Convert.ToSingle(input);
-    }
-
-    private float UserInputToFloat(TMP_InputField input)
-    {
-        string str = input.text;
-        if(string.IsNullOrEmpty(str))
-        {
-            Debug.Log("No Input!");
-            return -1;
-        }
-        return System.Convert.ToSingle(str);
-    }
-
     private void RoundToDecimalPlaces(ref List<float> randomNumbers, int decimalPlaces)
     {
         for(int i = 0; i < randomNumbers.Count; i++)
@@ -139,9 +95,9 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = UserInputToInt(numberToGenerate);
-        float minRange = UserInputToFloat(rangeMinimum);
-        float maxRange = UserInputToFloat(rangeMaximum);
+        int numToGen = UI_Conversions.UserInputToInt(numberToGenerate);
+        float minRange = UI_Conversions.UserInputToFloat(rangeMinimum);
+        float maxRange = UI_Conversions.UserInputToFloat(rangeMaximum);
 
         if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
@@ -152,7 +108,7 @@ public class RandomnessVis : MonoBehaviour
         if(roundingToggle.isOn)
         {
             //Mild rounding to make it easier
-            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            int decimalPlaceRound = UI_Conversions.UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
             RoundToDecimalPlaces(ref unityRandomRangeNumbers, decimalPlaceRound);
         }
         //Sort the list
@@ -178,9 +134,9 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = UserInputToInt(numberToGenerate);
-        float minRange = UserInputToFloat(rangeMinimum);
-        float maxRange = UserInputToFloat(rangeMaximum);
+        int numToGen = UI_Conversions.UserInputToInt(numberToGenerate);
+        float minRange = UI_Conversions.UserInputToFloat(rangeMinimum);
+        float maxRange = UI_Conversions.UserInputToFloat(rangeMaximum);
 
         if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
@@ -190,7 +146,7 @@ public class RandomnessVis : MonoBehaviour
 
         if(roundingToggle.isOn)
         {
-            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            int decimalPlaceRound = UI_Conversions.UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
             RoundToDecimalPlaces(ref cSharpRandomNumbers, decimalPlaceRound);
         }
 
@@ -214,9 +170,9 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = UserInputToInt(numberToGenerate);
-        float minRange = UserInputToFloat(rangeMinimum);
-        float maxRange = UserInputToFloat(rangeMaximum);
+        int numToGen = UI_Conversions.UserInputToInt(numberToGenerate);
+        float minRange = UI_Conversions.UserInputToFloat(rangeMinimum);
+        float maxRange = UI_Conversions.UserInputToFloat(rangeMaximum);
 
         if(numToGen == -1 || minRange == -1 || maxRange == -1)
             return;
@@ -234,7 +190,7 @@ public class RandomnessVis : MonoBehaviour
 
         if(roundingToggle.isOn)
         {
-            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            int decimalPlaceRound = UI_Conversions.UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
             RoundToDecimalPlaces(ref chiSquareRandomNumbers, decimalPlaceRound);
         }
         chiSquareRandomNumbers.Sort();
@@ -257,9 +213,9 @@ public class RandomnessVis : MonoBehaviour
 
         Clear(wg);
 
-        int numToGen = UserInputToInt(numberToGenerate);
-        float mean = UserInputToFloat(rangeMinimum);
-        float stdDev = UserInputToFloat(rangeMaximum);
+        int numToGen = UI_Conversions.UserInputToInt(numberToGenerate);
+        float mean = UI_Conversions.UserInputToFloat(rangeMinimum);
+        float stdDev = UI_Conversions.UserInputToFloat(rangeMaximum);
 
         if(numToGen == -1 || mean == -1 || stdDev == -1)
             return;
@@ -269,7 +225,7 @@ public class RandomnessVis : MonoBehaviour
 
         if(roundingToggle.isOn)
         {
-            int decimalPlaceRound = UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
+            int decimalPlaceRound = UI_Conversions.UserInputToInt(roundingPlaces.options[roundingPlaces.value].text);
             RoundToDecimalPlaces(ref standardDistributionRandomNumbers, decimalPlaceRound);
         }
 
