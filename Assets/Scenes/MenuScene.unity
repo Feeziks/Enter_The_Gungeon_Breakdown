@@ -356,7 +356,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1937617208}
         m_TargetAssemblyTypeName: MenuHandler, Assembly-CSharp
-        m_MethodName: LoadRNGScene
+        m_MethodName: LoadRNGGraphsScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -830,7 +830,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1937617208}
         m_TargetAssemblyTypeName: MenuHandler, Assembly-CSharp
-        m_MethodName: LoadRNGScene
+        m_MethodName: LoadRNGTestsScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

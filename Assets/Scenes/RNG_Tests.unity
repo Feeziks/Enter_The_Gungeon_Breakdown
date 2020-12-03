@@ -3540,8 +3540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 415, y: 107.5}
-  m_SizeDelta: {x: -850, y: -235}
+  m_AnchoredPosition: {x: 415, y: 108.5}
+  m_SizeDelta: {x: -850, y: -237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807954649
 MonoBehaviour:
@@ -4085,7 +4085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 928259169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161375639}
+        m_TargetAssemblyTypeName: ChestRarityTest, Assembly-CSharp
+        m_MethodName: DisableAllPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &928259169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4526,7 +4538,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031396004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161375639}
+        m_TargetAssemblyTypeName: ChestRarityTest, Assembly-CSharp
+        m_MethodName: DisableAllPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1031396004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4991,13 +5015,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4f4138a647c5e4ebfd2acf51a53349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raritiesPanel: {fileID: 807954647}
+  generatePanel: {fileID: 610784193}
+  modifierPanel: {fileID: 2090766803}
+  resultsPanel: {fileID: 295080245}
   commonRarityInput: {fileID: 555139089}
   uncommonRarityInput: {fileID: 966302625}
   rareRarityInput: {fileID: 1418181403}
   legendaryRarityInput: {fileID: 2002470880}
   totalRarityInput: {fileID: 2089983170}
-  errorColor: {r: 1, g: 0, b: 0, a: 0}
-  goodColor: {r: 0.06549895, g: 1, b: 0, a: 0}
   logFileToggle: {fileID: 1077403537}
   iterationsInput: {fileID: 1914086576}
   goButton: {fileID: 1976086504}
@@ -5799,7 +5825,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1360806393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161375639}
+        m_TargetAssemblyTypeName: ChestRarityTest, Assembly-CSharp
+        m_MethodName: EnableAllPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1360806393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7138,7 +7176,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1771326421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161375639}
+        m_TargetAssemblyTypeName: ChestRarityTest, Assembly-CSharp
+        m_MethodName: DisableAllPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1771326421
 MonoBehaviour:
   m_ObjectHideFlags: 0

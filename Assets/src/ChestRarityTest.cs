@@ -8,15 +8,19 @@ using TMPro;
 
 public class ChestRarityTest : MonoBehaviour
 {
+    //All panels
+    [SerializeField] private GameObject raritiesPanel;
+    [SerializeField] private GameObject generatePanel;
+    [SerializeField] private GameObject modifierPanel;
+    [SerializeField] private GameObject resultsPanel;
+    
+
     // Chest rarity UI Elements
     [SerializeField] private TMP_InputField commonRarityInput;
     [SerializeField] private TMP_InputField uncommonRarityInput;
     [SerializeField] private TMP_InputField rareRarityInput;
     [SerializeField] private TMP_InputField legendaryRarityInput;
     [SerializeField] private TMP_InputField totalRarityInput;
-
-    public Color errorColor;
-    public Color goodColor;
 
     [SerializeField] private Toggle logFileToggle;
     [SerializeField] private TMP_InputField iterationsInput;
@@ -32,6 +36,22 @@ public class ChestRarityTest : MonoBehaviour
     public void Start()
     {
         rarities = new float[4];
+    }
+
+    public void EnableAllPanels()
+    {
+        raritiesPanel.SetActive(true);
+        generatePanel.SetActive(true);
+        modifierPanel.SetActive(true);
+        resultsPanel.SetActive(true);
+    }
+
+    public void DisableAllPanels()
+    {
+        raritiesPanel.SetActive(false);
+        generatePanel.SetActive(false);
+        modifierPanel.SetActive(false);
+        resultsPanel.SetActive(false);
     }
 
     //Chest rarity input callbacks

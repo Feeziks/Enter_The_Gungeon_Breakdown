@@ -11,10 +11,13 @@ public class Window_Graph : MonoBehaviour
 
     [SerializeField] private RectTransform XAxisLabelTemplate;
     [SerializeField] private RectTransform YAxisLabelTemplate;
+    [SerializeField] private RectTransform XAxisLineTemplate;
+    [SerializeField] private RectTransform YAxisLineTemplate;
 
     private string pointName = "point";
     private string connectorName = "connector";
     private string labelName = "label";
+    private string lineName = "line";
 
     private GameObject CreatePoint(Vector2 anchoredPos)
     {
@@ -59,16 +62,19 @@ public class Window_Graph : MonoBehaviour
         }
 
         int axisLabelCount = (int)Mathf.Ceil(xAxis[1]) - (int)Mathf.Floor(xAxis[0]);
+        axisLabelCount = (int)Mathf.Min(axisLabelCount, 10); // never have more than 10 labels
         for(int i = 0; i <= axisLabelCount; i++)
         {
             //Add X Axis Labels
             float normalizer = i * 1.0f / axisLabelCount;
             float xPos = (normalizer * graphWidth);
             CreateXAxisLabel(xPos, (minVal + i).ToString("0.#"));
+            CreateXAxisLine(xPos);
 
             //Add Y Axis Labels
             float yPos = normalizer * graphHeight;
             CreateYAxisLabel(yPos, (normalizer * yAxis[1]).ToString("0.#"));
+            CreateYAxisLine(yPos);
         }
 
     }
@@ -105,6 +111,15 @@ public class Window_Graph : MonoBehaviour
         txt.SetText(label);
     }
 
+    private void CreateXAxisLine(float xPos)
+    {
+        RectTransform thisLine = Instantiate(XAxisLineTemplate);
+        thisLine.name = lineName;
+        thisLine.SetParent(graphContainer, false);
+        thisLine.gameObject.SetActive(true);
+        thisLine.anchoredPosition = new Vector2(xPos, XAxisLineTemplate.transform.position.y);
+    }
+
     private void CreateYAxisLabel(float yPos, string label)
     {
         RectTransform thisLabel = Instantiate(YAxisLabelTemplate);
@@ -114,6 +129,15 @@ public class Window_Graph : MonoBehaviour
         thisLabel.anchoredPosition = new Vector2(YAxisLabelTemplate.transform.position.x, yPos);
         TMP_Text txt = thisLabel.GetComponent<TMP_Text>();
         txt.SetText(label);
+    }
+
+    private void CreateYAxisLine(float yPos)
+    {
+        RectTransform thisLine = Instantiate(YAxisLineTemplate);
+        thisLine.name = lineName;
+        thisLine.SetParent(graphContainer, false);
+        thisLine.gameObject.SetActive(true);
+        thisLine.anchoredPosition = new Vector2(YAxisLineTemplate.position.x, yPos);
     }
 
     public void Clear()
@@ -126,7 +150,8 @@ public class Window_Graph : MonoBehaviour
             trans = graphContainer.transform.GetChild(i);
             if(string.Compare(trans.name, pointName)        == 0 || 
                string.Compare(trans.name, connectorName)    == 0 ||
-               string.Compare(trans.name, labelName)        == 0)
+               string.Compare(trans.name, labelName)        == 0 ||
+               string.Compare(trans.name, lineName)         == 0)
             {
                 Destroy(trans.gameObject);
             }

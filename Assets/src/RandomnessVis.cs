@@ -235,7 +235,7 @@ public class RandomnessVis : MonoBehaviour
         int maxCount = System.Int32.MinValue;
         List<Vector2> counts = CountOccurences(standardDistributionRandomNumbers, ref minCount, ref maxCount);
 
-        wg.Graph(counts, new Vector2(mean + stdDev * -4.0f, mean + stdDev * 4.0f), new Vector2(minCount, maxCount));
+        wg.Graph(counts, new Vector2(mean + stdDev * -3.0f, mean + stdDev * 3.0f), new Vector2(minCount, maxCount));
 
 
     }
