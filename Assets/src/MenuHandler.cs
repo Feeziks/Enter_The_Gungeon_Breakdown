@@ -14,4 +14,9 @@ public class MenuHandler : MonoBehaviour
     {
         SceneManager.LoadScene("RNG_Tests", LoadSceneMode.Single);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
