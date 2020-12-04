@@ -34,8 +34,8 @@ public class Window_Graph : MonoBehaviour
 
     public void Graph(List<Vector2> vals, Vector2 xAxis, Vector2 yAxis)
     {
-        float graphWidth = graphContainer.sizeDelta.x;
-        float graphHeight = graphContainer.sizeDelta.y;
+        float graphWidth = graphContainer.rect.width;//graphContainer.sizeDelta.x;
+        float graphHeight = graphContainer.rect.height;//graphContainer.sizeDelta.y;
 
         GameObject lastPoint = null;
         GameObject thisPoint = null;
