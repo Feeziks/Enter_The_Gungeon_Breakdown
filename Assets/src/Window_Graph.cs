@@ -61,14 +61,14 @@ public class Window_Graph : MonoBehaviour
             lastPoint = thisPoint;
         }
 
-        int axisLabelCount = (int)Mathf.Ceil(xAxis[1]) - (int)Mathf.Floor(xAxis[0]);
-        axisLabelCount = (int)Mathf.Min(axisLabelCount, 10); // never have more than 10 labels
+        int diff = (int)Mathf.Ceil(xAxis[1]) - (int)Mathf.Floor(xAxis[0]);
+        int axisLabelCount = (int)Mathf.Min(diff, 10); // never have more than 10 labels
         for(int i = 0; i <= axisLabelCount; i++)
         {
             //Add X Axis Labels
             float normalizer = i * 1.0f / axisLabelCount;
             float xPos = (normalizer * graphWidth);
-            CreateXAxisLabel(xPos, (minVal + i).ToString("0.#"));
+            CreateXAxisLabel(xPos, (Mathf.FloorToInt(xAxis[0] + i * (diff / axisLabelCount))).ToString("0.#"));
             CreateXAxisLine(xPos);
 
             //Add Y Axis Labels

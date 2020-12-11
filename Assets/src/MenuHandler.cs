@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour
 {
+
     public void LoadRNGGraphsScene()
     {
         SceneManager.LoadScene("RNG_Graphs", LoadSceneMode.Single);
@@ -13,6 +14,10 @@ public class MenuHandler : MonoBehaviour
     public void LoadRNGTestsScene()
     {
         SceneManager.LoadScene("RNG_Tests", LoadSceneMode.Single);
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 
     public void QuitGame()

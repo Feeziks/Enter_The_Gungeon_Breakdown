@@ -161,6 +161,7 @@ public class Randomness
         for(int i = 0; i <= luck; i++)
         {
             float randomValue = RandomSquaredFloat(0.0f, 1.0f);
+            randomValue = RandomUniformFloat(0.0f, 1.0f);
 
             //Compare the result to the cumulative values of each chest type
             for(int j = 3; j >= 0; j--)
