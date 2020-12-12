@@ -40,18 +40,12 @@ public class ChestRarityTest : MonoBehaviour
 
     public void EnableAllPanels()
     {
-        raritiesPanel.SetActive(true);
-        generatePanel.SetActive(true);
-        modifierPanel.SetActive(true);
-        resultsPanel.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void DisableAllPanels()
     {
-        raritiesPanel.SetActive(false);
-        generatePanel.SetActive(false);
-        modifierPanel.SetActive(false);
-        resultsPanel.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     //Chest rarity input callbacks
@@ -174,7 +168,7 @@ public class ChestRarityTest : MonoBehaviour
 
             output += "Number of " + chestRarityName + " chests generated: " + chestCounts[i];
             output += "\r\nNumber of " + chestRarityName + " chests expected: " + expectedChests[i];
-            output += "\r\nDifference of " + Mathf.Abs(chestCounts[i] - expectedChests[i]);
+            output += "\r\nDifference of " + ((float)Mathf.Abs(chestCounts[i] - expectedChests[i])/(float)chestCounts[i]) * 100 + "%";
             output += "\r\n\r\n";
         }
 
