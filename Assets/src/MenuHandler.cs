@@ -15,6 +15,12 @@ public class MenuHandler : MonoBehaviour
     {
         SceneManager.LoadScene("RNG_Tests", LoadSceneMode.Single);
     }
+
+    public void LoadMapGeneration()
+    {
+        SceneManager.LoadScene("Map_Generation", LoadSceneMode.Single);
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
