@@ -33,6 +33,16 @@ public class Randomness
     }
     #endregion
 
+    public void SetUnitySeed(int seed)
+    {
+        UnityEngine.Random.InitState(seed);
+    }
+    
+    public void SetSystemSeed(int seed)
+    {
+        SysRand = new System.Random(seed);
+    }
+
     public void UnityRandom(int num, float min, float max, ref List<float> randomNumbers)
     {
         //Clear the list of any data from before

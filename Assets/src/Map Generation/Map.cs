@@ -2,8 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map
 {
     //This class holds the data that describes the map of any given level
     //This class does not perform any actions relating to generating/deleting/checking etc. maps it is just a data holder
+
+    //Constructor
+    public Map()
+    {
+
+    }
+
+    //public members
+    public void AddRoom(Room newRoom)
+    {
+        rooms.Add(newRoom);
+    }
+
+    public void ClearMap()
+    {
+        rooms.Clear();
+    }
+
+    //private members
+    private List<Room> rooms = new List<Room>();
+
+    //public methods
+
+    //private methods
 }

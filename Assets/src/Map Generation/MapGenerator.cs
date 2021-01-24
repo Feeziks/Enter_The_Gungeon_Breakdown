@@ -12,8 +12,6 @@ public class MapGenerator
     //  Probably some other things too
 
     #region SINGLETON
-
-
     MapGenerator()
     {
 
@@ -45,10 +43,19 @@ public class MapGenerator
     //public methods
     public Map GenerateNewMap(int level, int difficulty)
     {
+        Map myMap = new Map();
+
         //Get a number of points for this map
         int totalPoints = CalculateMapPoints(level, difficulty);
-        Debug.Log(totalPoints);
-        //Generate rooms within a certain budget of points
+        int currPoints = totalPoints;
+        //Generate rooms until we are out of points
+        do
+        {
+            Room thisRoom = RoomGenerator.Instance.GenerateRoom(level, difficulty);
+            myMap.AddRoom(thisRoom);
+            currPoints -= thisRoom.cost;
+        }
+        while(currPoints > 0);
 
 
         return null;
