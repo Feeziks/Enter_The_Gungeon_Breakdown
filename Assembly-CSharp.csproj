@@ -62,6 +62,11 @@
      <Compile Include="Assets\src\ChestRarityTest.cs" />
      <Compile Include="Assets\src\Randomness.cs" />
      <Compile Include="Assets\src\UI_Conversions.cs" />
+     <Compile Include="Assets\src\Map Generation\Map.cs" />
+     <Compile Include="Assets\src\Map Generation\MapGenerator.cs" />
+     <Compile Include="Assets\src\Map Generation\Room.cs" />
+     <Compile Include="Assets\src\Map Generation\RoomGenerator.cs" />
+     <Compile Include="Assets\src\Map Generation\MapManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
