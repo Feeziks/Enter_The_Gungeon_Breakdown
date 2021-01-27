@@ -12,7 +12,7 @@ public class MapManager : MonoBehaviour
     public GameObject display;
 
     //Private members
-    private Map m_map;
+    private Map m_map = new Map();
 
     [SerializeField] private TMP_InputField levelInput;
     [SerializeField] private TMP_Dropdown difficultyInput;
@@ -27,7 +27,18 @@ public class MapManager : MonoBehaviour
             return;
         }
         int difficulty = difficultyInput.value;
-        MapGenerator.Instance.GenerateNewMap(level, difficulty);
+        m_map = MapGenerator.Instance.GenerateNewMap(level, difficulty);
+
+        //Display the new map
+        SpriteRenderer sr = display.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        if(sr == null)
+        {
+            Debug.Log("No renderer");
+            return;
+        }
+        Texture2D tx = m_map.GetRoomTexture(0);
+        Sprite newSprite = Sprite.Create(tx, new Rect(0, 0, tx.width, tx.height), new Vector2(0, 0));
+        sr.sprite = newSprite;
     }
 
     //Private methods

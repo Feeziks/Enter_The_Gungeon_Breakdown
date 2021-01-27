@@ -24,6 +24,7 @@ public class Room
 
     //public members
     public int cost { get; }
+    public Texture2D texture;
 
     //private members
 

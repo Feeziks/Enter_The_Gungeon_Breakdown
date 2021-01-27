@@ -58,7 +58,7 @@ public class MapGenerator
         while(currPoints > 0);
 
 
-        return null;
+        return myMap;
     }
 
     //private methods
