@@ -65,10 +65,10 @@ if __name__ == "__main__":
                 for idx, _ in enumerate(directions):
                     if(dictionary[this_prototype]["sockets"][directions[idx]] == dictionary[other_prototype]["sockets"][directions_reverse[idx]]):
                         neighbor_list[directions[idx]].append(other_prototype)
-                        
+
         dictionary[this_prototype]["neighbor_list"] = neighbor_list
         
 
-    with open('test.txt', 'w') as outfile:
+    with open('..\\Resources\\Prototypes.json', 'w') as outfile:
         json.dump(dictionary, outfile, indent=4)
     
