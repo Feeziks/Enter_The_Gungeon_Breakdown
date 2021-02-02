@@ -56,6 +56,9 @@ public class RoomGenerator
 
         // determine which slots will be "active" and which will be "inactive"
         DetermineSlotActivity(numSlots);
+        PrintSlots(numSlots);
+
+        //Next we collapse the active slots following the WFC algo
 
         return null;
     }
@@ -88,12 +91,11 @@ public class RoomGenerator
             //Randomly "walk" from an active edge slot and activate that new slot
 
             //Find an active slot on the edge
-            do{
+            do
+            {
                 int index = (int)Randomness.Instance.RandomUniformFloat(0, activeSlots.Count);
-                Debug.Log(index);
                 thisSlot = activeSlots[index];
-            }
-            while(!IsSlotActiveEdge(thisSlot.x, thisSlot.y, numSlots));
+            }while(!IsSlotActiveEdge(thisSlot.x, thisSlot.y, numSlots));
 
             //Randomly choose a direction to move
             int xfloor = thisSlot.x == 0 ? 0 : -1;
@@ -102,17 +104,20 @@ public class RoomGenerator
             int yfloor = thisSlot.y == 0 ? 0 : -1;
             int yceil = thisSlot.y == (numSlots -1) ? 0 : 1;
 
-            int x = (int)Randomness.Instance.RandomUniformFloat(xfloor, xceil);
-            int y = (int)Randomness.Instance.RandomUniformFloat(yfloor, yceil);
+            int x = 0;
+            int y = 0;
+            Vector2Int nextSlot = new Vector2Int(0, 0);
 
-            Vector2Int nextSlot = new Vector2Int(thisSlot.x + x, thisSlot.y + y);
+            do{
+                x = (int)Randomness.Instance.RandomUniformFloat(xfloor, xceil);
+                y = (int)Randomness.Instance.RandomUniformFloat(yfloor, yceil);
+                nextSlot = new Vector2Int(thisSlot.x + x, thisSlot.y + y);
+            }while(roomSlots[nextSlot.x, nextSlot.y].active);
 
             roomSlots[nextSlot.x, nextSlot.y].active = true;
             activeSlots.Add(nextSlot);
             numActiveSlots++;
         }
-
-        Debug.Log(activeSlots);
         
     }
 
@@ -131,11 +136,27 @@ public class RoomGenerator
                 if(thisSloty + y < 0 || thisSloty + y >= numSlots)
                     continue;
 
-                if(roomSlots[thisSlotx + x, thisSloty + y].active = false) //If there is at least 1 space adjacent to this piece that is inactive then we are on the edge
+                if(roomSlots[thisSlotx + x, thisSloty + y].active == false) //If there is at least 1 space adjacent to this piece that is inactive then we are on the edge
                     return true;
             }
         }
 
         return false;
+    }
+
+    private void PrintSlots(int numSlots)
+    {
+        //Debugging tool to print out active and inactive slots
+        string toPrint = "\n";
+        for(int y = 0; y < numSlots; y++)
+        {
+            for(int x = 0; x < numSlots; x++)
+            {
+                toPrint += roomSlots[x,y].active + "\t";
+            }
+            toPrint += "\n";
+        }
+
+        Debug.Log(toPrint);
     }
 }
