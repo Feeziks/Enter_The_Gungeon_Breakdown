@@ -69,13 +69,11 @@
      <Compile Include="Assets\src\Map Generation\Map.cs" />
      <Compile Include="Assets\src\Randomness.cs" />
      <Compile Include="Assets\src\Map Generation\MapGeneration.cs" />
-     <Compile Include="Assets\src\Map Generation\PieceSet.cs" />
      <Compile Include="Assets\src\UI_Conversions.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
-     <None Include="Assets\src\Map Generation\Python\test.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />

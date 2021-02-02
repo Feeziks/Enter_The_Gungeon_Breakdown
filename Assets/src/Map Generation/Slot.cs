@@ -12,13 +12,16 @@ public class Slot
     public Vector2Int position;
 
     //List of possible pieces that can exist in this slot
-    public PieceSet pieceSet;
+    //public PieceSet pieceSet;
 
     //The actual piece that exists within this slot
     public Piece piece;
 
     //The gameobject for this slot
     public GameObject go;
+    
+    //Is this slot "active"
+    public bool active;
 
     //Check if this slot has already been collapsed (which means that the piece that will fill in this slot has already been determined)
     public bool IsCollapsed()
@@ -36,7 +39,8 @@ public class Slot
     public Slot(Vector2Int position)
     {
         this.position = position;
-        this.pieceSet = new PieceSet();
+        this.active = false;
+        //this.pieceSet = new PieceSet();
     }
 
     //Get this slots neighbors in all 8 directions
@@ -58,13 +62,13 @@ public class Slot
         this.piece = piece;
 
         //Empty the piece set since we have decided what piece this will be
-        this.pieceSet.Clear();
+        //this.pieceSet.Clear();
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
     public void CollapseRandom()
     {
-        if(!this.pieceSet.Any())
+        //if(!this.pieceSet.Any())
         {
             Debug.Log("Attempted to collapse slot at " + this.position + " with an empty piece set!");
             throw new Exception("Slot cannot collapse with empty piece set");
@@ -79,6 +83,7 @@ public class Slot
         //TODO: Randomly select a piece from the piece set
     }
 
+/*
     //Remove a piece from the slots piece set. This occurs when another slot has been collapsed and the options available to this slot are changed
     public void RemovePieces(PieceSet toRemove)
     {
@@ -91,5 +96,6 @@ public class Slot
             throw new Exception("Slot cannot collapse with empty piece set");
         }
     }
+*/
 
 }

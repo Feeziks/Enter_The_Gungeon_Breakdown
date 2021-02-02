@@ -11,7 +11,6 @@ public class Piece
 
     public int rotation;
 
-    public PieceSet[] legalNeighbors;
     public Piece[][] legalNeighborsArray;
 
     public int index;
