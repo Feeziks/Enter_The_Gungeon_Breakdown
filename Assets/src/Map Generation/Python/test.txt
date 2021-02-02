@@ -1,0 +1,555 @@
+{
+    "prototype_TestRoomPieceSprite": {
+        "sprite": "TestRoomPieceSprite.png",
+        "sockets": {
+            "north": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "south": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "southwest": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "west": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "northwest": [
+                185,
+                122,
+                87,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southeast": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "south": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "southwest": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "west": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northwest": [
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ]
+        }
+    },
+    "prototype_TestRoomPieceSprite2": {
+        "sprite": "TestRoomPieceSprite2.png",
+        "sockets": {
+            "north": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "south": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "southwest": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "west": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "northwest": [
+                185,
+                122,
+                87,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "south": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "southwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "west": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSpritePit"
+            ]
+        }
+    },
+    "prototype_TestRoomPieceSpriteCorner": {
+        "sprite": "TestRoomPieceSpriteCorner.png",
+        "sockets": {
+            "north": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "south": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "southwest": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "west": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "northwest": [
+                0,
+                0,
+                0,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southeast": [],
+            "south": [
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southwest": [],
+            "west": [],
+            "northwest": [
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ]
+        }
+    },
+    "prototype_TestRoomPieceSpriteDoor": {
+        "sprite": "TestRoomPieceSpriteDoor.png",
+        "sockets": {
+            "north": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "south": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "southwest": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "west": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "northwest": [
+                185,
+                122,
+                87,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southeast": [
+                "prototype_TestRoomPieceSpriteCorner"
+            ],
+            "south": [
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southwest": [],
+            "west": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpritePit",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ]
+        }
+    },
+    "prototype_TestRoomPieceSpritePit": {
+        "sprite": "TestRoomPieceSpritePit.png",
+        "sockets": {
+            "north": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "south": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "southwest": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "west": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "northwest": [
+                185,
+                122,
+                87,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "southeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "south": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2"
+            ],
+            "southwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "west": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpriteWall"
+            ],
+            "northwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2"
+            ]
+        }
+    },
+    "prototype_TestRoomPieceSpriteWall": {
+        "sprite": "TestRoomPieceSpriteWall.png",
+        "sockets": {
+            "north": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "northeast": [
+                185,
+                122,
+                87,
+                255
+            ],
+            "east": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "southeast": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "south": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "southwest": [
+                0,
+                0,
+                0,
+                255
+            ],
+            "west": [
+                34,
+                177,
+                76,
+                255
+            ],
+            "northwest": [
+                185,
+                122,
+                87,
+                255
+            ]
+        },
+        "neighbor_list": {
+            "north": [
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor"
+            ],
+            "northeast": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "east": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "southeast": [
+                "prototype_TestRoomPieceSpriteCorner"
+            ],
+            "south": [
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor"
+            ],
+            "southwest": [],
+            "west": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpriteCorner",
+                "prototype_TestRoomPieceSpriteDoor",
+                "prototype_TestRoomPieceSpritePit"
+            ],
+            "northwest": [
+                "prototype_TestRoomPieceSprite",
+                "prototype_TestRoomPieceSprite2",
+                "prototype_TestRoomPieceSpritePit"
+            ]
+        }
+    }
+}
