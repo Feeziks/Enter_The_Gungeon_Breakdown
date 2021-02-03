@@ -6,23 +6,26 @@ using MapGeneration;
 
 public class Piece
 {
-    //The pieces prefab
-    public GameObject prefab;
+    //Public members
+    
+    //TODO: Need someway to contain the data for valid neighbors
+    //public SomeClassOrSomething validNeighbors[][]; //will be an 8 x number of prototypes array so this could be quite mem heavy
+    //hopefully we can store that information in a smaller/more compact method like an int that is an index into the array of prototypes
 
-    public int rotation;
+    //TODO: Need someway to contain the valid options for this piece
+    //public SomeClassOrSomething validPieces[]; //will be an array(list?) of number of prototypes. remove / add options as WFC
+    //iterates over the slots
 
-    public Piece[][] legalNeighborsArray;
-
-    public int index;
-    public float PLogP;
+    //Private members
+    private GameObject prefab;
 
     //Constructor
-    public Piece(GameObject prefab, int rotation, int index)
+    public Piece()
     {
-        this.prefab = prefab;
-        this.rotation = rotation;
-        this.index = index;
+
     }
+
+    //Public methods
 
     //Check if another Piece fits in a specific direction
     public bool Fits(Direction dir, Piece piece)
@@ -31,5 +34,6 @@ public class Piece
         return true;
     }
 
-    //
+    //private methods
+
 }

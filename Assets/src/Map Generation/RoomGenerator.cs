@@ -56,7 +56,6 @@ public class RoomGenerator
 
         // determine which slots will be "active" and which will be "inactive"
         DetermineSlotActivity(numSlots);
-        PrintSlots(numSlots);
 
         //Next we collapse the active slots following the WFC algo
 

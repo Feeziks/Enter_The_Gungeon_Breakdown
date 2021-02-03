@@ -70,6 +70,8 @@
      <Compile Include="Assets\src\Randomness.cs" />
      <Compile Include="Assets\src\Map Generation\MapGeneration.cs" />
      <Compile Include="Assets\src\UI_Conversions.cs" />
+     <Compile Include="Assets\src\Map Generation\WaveFunctionCollapse.cs" />
+     <Compile Include="Assets\src\Map Generation\RoomPiece_SO.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

@@ -1,555 +1,614 @@
 {
-    "prototype_TestRoomPieceSprite": {
-        "sprite": "TestRoomPieceSprite.png",
-        "sockets": {
-            "north": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "south": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "southwest": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "west": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "northwest": [
-                185,
-                122,
-                87,
-                255
-            ]
-        },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southeast": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "south": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "southwest": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "west": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northwest": [
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ]
+    "ForestPieces": {
+        "forest_piece_for_test": {
+            "sprite": "Resources\\RoomPieces\\ForestPieces\\forest_piece_for_test.png",
+            "sockets": {
+                "north": [
+                    255,
+                    255,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87
+                ],
+                "east": [
+                    255,
+                    255,
+                    255
+                ],
+                "southeast": [
+                    185,
+                    122,
+                    87
+                ],
+                "south": [
+                    255,
+                    255,
+                    255
+                ],
+                "southwest": [
+                    185,
+                    122,
+                    87
+                ],
+                "west": [
+                    185,
+                    122,
+                    87
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87
+                ]
+            },
+            "neighbor_list": {
+                "north": [],
+                "northeast": [],
+                "east": [],
+                "southeast": [],
+                "south": [],
+                "southwest": [],
+                "west": [],
+                "northwest": []
+            }
         }
     },
-    "prototype_TestRoomPieceSprite2": {
-        "sprite": "TestRoomPieceSprite2.png",
-        "sockets": {
-            "north": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "south": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "southwest": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "west": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "northwest": [
-                185,
-                122,
-                87,
-                255
-            ]
+    "TestPieces": {
+        "TestRoomPieceSprite": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSprite.png",
+            "sockets": {
+                "north": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "south": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "southwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "west": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "east": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southeast": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "south": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "southwest": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "west": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northwest": [
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ]
+            }
         },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "south": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "southwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "west": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSpritePit"
-            ]
-        }
-    },
-    "prototype_TestRoomPieceSpriteCorner": {
-        "sprite": "TestRoomPieceSpriteCorner.png",
-        "sockets": {
-            "north": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "south": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "southwest": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "west": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "northwest": [
-                0,
-                0,
-                0,
-                255
-            ]
+        "TestRoomPieceSprite2": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSprite2.png",
+            "sockets": {
+                "north": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "south": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "southwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "west": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpritePit"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpritePit"
+                ],
+                "east": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "south": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpritePit"
+                ],
+                "southwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "west": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSpritePit"
+                ]
+            }
         },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southeast": [],
-            "south": [
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southwest": [],
-            "west": [],
-            "northwest": [
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ]
-        }
-    },
-    "prototype_TestRoomPieceSpriteDoor": {
-        "sprite": "TestRoomPieceSpriteDoor.png",
-        "sockets": {
-            "north": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "south": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "southwest": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "west": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "northwest": [
-                185,
-                122,
-                87,
-                255
-            ]
+        "TestRoomPieceSpriteCorner": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSpriteCorner.png",
+            "sockets": {
+                "north": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "south": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "southwest": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "west": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "northwest": [
+                    0,
+                    0,
+                    0,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "east": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southeast": [],
+                "south": [
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southwest": [],
+                "west": [],
+                "northwest": [
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ]
+            }
         },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southeast": [
-                "prototype_TestRoomPieceSpriteCorner"
-            ],
-            "south": [
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southwest": [],
-            "west": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpritePit",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ]
-        }
-    },
-    "prototype_TestRoomPieceSpritePit": {
-        "sprite": "TestRoomPieceSpritePit.png",
-        "sockets": {
-            "north": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "south": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "southwest": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "west": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "northwest": [
-                185,
-                122,
-                87,
-                255
-            ]
+        "TestRoomPieceSpriteDoor": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSpriteDoor.png",
+            "sockets": {
+                "north": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "south": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "southwest": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "west": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "east": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southeast": [
+                    "TestRoomPieceSpriteCorner"
+                ],
+                "south": [
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southwest": [],
+                "west": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpritePit",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ]
+            }
         },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "southeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "south": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2"
-            ],
-            "southwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "west": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpriteWall"
-            ],
-            "northwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2"
-            ]
-        }
-    },
-    "prototype_TestRoomPieceSpriteWall": {
-        "sprite": "TestRoomPieceSpriteWall.png",
-        "sockets": {
-            "north": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "northeast": [
-                185,
-                122,
-                87,
-                255
-            ],
-            "east": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "southeast": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "south": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "southwest": [
-                0,
-                0,
-                0,
-                255
-            ],
-            "west": [
-                34,
-                177,
-                76,
-                255
-            ],
-            "northwest": [
-                185,
-                122,
-                87,
-                255
-            ]
+        "TestRoomPieceSpritePit": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSpritePit.png",
+            "sockets": {
+                "north": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "south": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "southwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "west": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2"
+                ],
+                "east": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "southeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "south": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2"
+                ],
+                "southwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "west": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpriteWall"
+                ],
+                "northwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2"
+                ]
+            }
         },
-        "neighbor_list": {
-            "north": [
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor"
-            ],
-            "northeast": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "east": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "southeast": [
-                "prototype_TestRoomPieceSpriteCorner"
-            ],
-            "south": [
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor"
-            ],
-            "southwest": [],
-            "west": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpriteCorner",
-                "prototype_TestRoomPieceSpriteDoor",
-                "prototype_TestRoomPieceSpritePit"
-            ],
-            "northwest": [
-                "prototype_TestRoomPieceSprite",
-                "prototype_TestRoomPieceSprite2",
-                "prototype_TestRoomPieceSpritePit"
-            ]
+        "TestRoomPieceSpriteWall": {
+            "sprite": "Resources\\RoomPieces\\TestPieces\\TestRoomPieceSpriteWall.png",
+            "sockets": {
+                "north": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "northeast": [
+                    185,
+                    122,
+                    87,
+                    255
+                ],
+                "east": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "southeast": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "south": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "southwest": [
+                    0,
+                    0,
+                    0,
+                    255
+                ],
+                "west": [
+                    34,
+                    177,
+                    76,
+                    255
+                ],
+                "northwest": [
+                    185,
+                    122,
+                    87,
+                    255
+                ]
+            },
+            "neighbor_list": {
+                "north": [
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor"
+                ],
+                "northeast": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ],
+                "east": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit"
+                ],
+                "southeast": [
+                    "TestRoomPieceSpriteCorner"
+                ],
+                "south": [
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor"
+                ],
+                "southwest": [],
+                "west": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpriteCorner",
+                    "TestRoomPieceSpriteDoor",
+                    "TestRoomPieceSpritePit"
+                ],
+                "northwest": [
+                    "TestRoomPieceSprite",
+                    "TestRoomPieceSprite2",
+                    "TestRoomPieceSpritePit"
+                ]
+            }
         }
     }
 }
