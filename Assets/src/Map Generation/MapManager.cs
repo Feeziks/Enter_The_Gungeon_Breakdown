@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MapGeneration;
 
 public class MapManager : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] private TMP_InputField levelInput;
     [SerializeField] private TMP_Dropdown difficultyInput;
+
+    private Prototype_Data data = new Prototype_Data();
+
+    public void Start()
+    {
+        data.ReadFromJsonFile();
+    }
 
     //Public methods
     public void GetNewMap()

@@ -93,6 +93,8 @@ if __name__ == "__main__":
         outfile.write("using System.Collections;\n")
         outfile.write("using System.Collections.Generic;\n")
         outfile.write("using UnityEngine;\n")
+        outfile.write("using System.Text.Json;\n")
+        outfile.write("using System.Text.Json.Serialization;\n")
         outfile.write("\n\n")
         outfile.write("namespace MapGeneration\n")
         outfile.write("{\n")
@@ -115,6 +117,10 @@ if __name__ == "__main__":
         outfile.write("};\n")
 
         outfile.write("\t}\n\n")
+
+        outfile.write("\tpublic class JSON_Data\n")
+        outfile.write("\n")
+        outfile.write("\t\tpublic 
 
 
         outfile.write("\t//Direction enum\n")

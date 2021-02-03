@@ -1,15 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 
 namespace MapGeneration
 {
+
 	public static class Globals
 	{
 		public static readonly int NUM_FLOOR_TYPES = 2;
 		public static readonly int[] NUM_PIECES_PER_FLOOR = {1, 6};
 	}
+
+	public class Prototype_Data
+	{
+		public Dictionary<string, Piece_Data> data;
+
+		private static string jsonFilePath = "Assets\\src\\Map Generation\\Resources\\Prototypes.json"; //Location of the pythong json output
+
+		public Prototype_Data()
+		{
+			
+		}
+
+		public void ReadFromJsonFile()
+		{
+			string jsonString = File.ReadAllText(jsonFilePath);
+			Debug.Log(jsonString);
+		}
+
+	}
+
+	public class Piece_Data
+	{
+		public string spriteLocation;
+		public Dictionary<string, int[]> sockets;
+		public Dictionary<string, string> neighbors;
+	}
+
 
 	//Direction enum
 	public enum Direction : int
