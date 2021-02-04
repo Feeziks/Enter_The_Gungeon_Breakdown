@@ -58,6 +58,7 @@ public class RoomGenerator
         DetermineSlotActivity(numSlots);
 
         //Next we collapse the active slots following the WFC algo
+        
 
         return null;
     }

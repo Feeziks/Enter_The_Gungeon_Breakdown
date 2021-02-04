@@ -14,6 +14,7 @@ if __name__ == "__main__":
     path = "..\\Resources\\RoomPieces\\"
     
     files = []
+    prefabs = []
     floorTypes = {}
 
     for root, subdirs, f in os.walk(path):
@@ -24,12 +25,15 @@ if __name__ == "__main__":
         for file in f:
             if file.endswith(".png"):
                 files.append(root + "\\" + file)
+            
+            if file.endswith(".prefab"):
+                prefabs.append(root + "\\" + file)
 
     dictionary = {}
     thisFloorType = ""
 
     #Go through the images and get the pixels in the corners and centers
-    for file in files:
+    for file, prefab in zip(files, prefabs):
         thisSprite = Image.open(file)
         halfX = thisSprite.size[0] / 2
         halfY = thisSprite.size[1] / 2
@@ -57,6 +61,7 @@ if __name__ == "__main__":
 
         dictionary[prtototype_type][prototypename] = {
             'sprite' : file.split("\\", 1)[1],
+            'prefab' : prefab.split("\\", 1)[1].split(".prefab")[0],
             'sockets' : {
                 'north': north,
                 'northeast': northEast,
@@ -89,12 +94,64 @@ if __name__ == "__main__":
     with open('..\\Resources\\Prototypes.json', 'w') as outfile:
         json.dump(dictionary, outfile, indent=4)
 
+
+    for subDict, _ in dictionary.items():
+        with open("..\\" + subDict + ".cs", 'w')as outfile:
+            outfile.write("using System.Collections;\n")
+            outfile.write("using System.Collections.Generic;\n")
+            outfile.write("using UnityEngine;\n")
+            outfile.write("\n\n")
+            outfile.write("public class " + subDict + "\n")
+            outfile.write("{\n")
+
+            for prototype, _ in dictionary[subDict].items():
+                outfile.write("\tprivate static GameObject " + prototype + "_prefab = Resources.Load(\"" + repr(dictionary[subDict][prototype]['prefab']).strip("'") + "\") as GameObject;\n")
+
+            outfile.write("\n\n")
+
+            for prototype, _ in dictionary[subDict].items():
+                outfile.write("\tprivate static int[,] " + prototype + "_valid_neighbors = new int[8, " + str(len(dictionary[subDict].keys())) + "] { ")
+
+                for dir in directions:
+                    outfile.write("{ ")
+                    first = 1
+                    for other, _ in dictionary[subDict].items():
+                        if other in dictionary[subDict][prototype]["neighbor_list"][dir]:
+                            index = list(dictionary[subDict].keys()).index(other)
+                            if first == 1:
+                                outfile.write(str(index))
+                                first = 0
+                            else:
+                                outfile.write(", " + str(index))
+                        else:
+                            if first == 1:
+                                outfile.write("-1")
+                                first = 0
+                            else:
+                                outfile.write(", -1")
+                            
+                    if dir != directions[-1]:       
+                        outfile.write("}, ")
+                    else:
+                        outfile.write("} };")
+                        
+
+                
+                outfile.write("\n")
+
+            outfile.write("\n\n")
+
+            for prototype, _ in dictionary[subDict].items():
+                outfile.write("\tpublic static Piece " + prototype + " = new Piece(\"" + prototype + "\", " + prototype + "_prefab, " + prototype + "_valid_neighbors);\n")
+
+            outfile.write("}\n")
+
+
+
     with open('..\\MapGeneration.cs', 'w') as outfile:
         outfile.write("using System.Collections;\n")
         outfile.write("using System.Collections.Generic;\n")
         outfile.write("using UnityEngine;\n")
-        outfile.write("using System.Text.Json;\n")
-        outfile.write("using System.Text.Json.Serialization;\n")
         outfile.write("\n\n")
         outfile.write("namespace MapGeneration\n")
         outfile.write("{\n")
@@ -117,10 +174,6 @@ if __name__ == "__main__":
         outfile.write("};\n")
 
         outfile.write("\t}\n\n")
-
-        outfile.write("\tpublic class JSON_Data\n")
-        outfile.write("\n")
-        outfile.write("\t\tpublic 
 
 
         outfile.write("\t//Direction enum\n")
