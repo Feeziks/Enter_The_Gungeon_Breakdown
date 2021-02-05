@@ -144,6 +144,18 @@ if __name__ == "__main__":
             for prototype, _ in dictionary[subDict].items():
                 outfile.write("\tpublic static Piece " + prototype + " = new Piece(\"" + prototype + "\", " + prototype + "_prefab, " + prototype + "_valid_neighbors);\n")
 
+            outfile.write("\n")
+            outfile.write("\tpublic static List<Piece> all_" + str(subDict) + "_pieces = new List<Piece> {")
+            first = 1
+            for prototype, _ in dictionary[subDict].items():
+                if first == 1:
+                    outfile.write(str(prototype))
+                    first = 0
+                else:
+                    outfile.write(", " + str(prototype))
+
+            outfile.write("};\n")
+
             outfile.write("}\n")
 
 

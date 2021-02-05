@@ -12,4 +12,6 @@ public class ForestPieces
 
 
 	public static Piece forest_piece_for_test = new Piece("forest_piece_for_test", forest_piece_for_test_prefab, forest_piece_for_test_valid_neighbors);
+
+	public static List<Piece> all_ForestPieces_pieces = new List<Piece> {forest_piece_for_test};
 }

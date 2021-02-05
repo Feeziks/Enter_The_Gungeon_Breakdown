@@ -12,7 +12,10 @@ public class Slot
     public Vector2Int position;
 
     //List of possible pieces that can exist in this slot
-    //public PieceSet pieceSet;
+    public List<Piece> possiblePieces;
+
+    //List of the valid pieces than can exist in this slot
+    public List<Piece> validPieces;
 
     //The actual piece that exists within this slot
     public Piece piece;
@@ -36,18 +39,12 @@ public class Slot
     }
 
     //Class constructor
-    public Slot(Vector2Int position)
+    public Slot(Vector2Int position, List<Piece> pieceSet)
     {
         this.position = position;
         this.active = false;
-        //this.pieceSet = new PieceSet();
-    }
-
-    //Get this slots neighbors in all 8 directions
-    public Slot GetNeighbor(Direction dir)
-    {
-        //TODO figure out how to get a slots neighbor
-        return null;
+        this.possiblePieces = pieceSet;
+        this.validPieces = pieceSet;
     }
 
     //Collapse this slot to a specific piece, meaning, determine the piece that will be chosen to be placed here
@@ -62,13 +59,13 @@ public class Slot
         this.piece = piece;
 
         //Empty the piece set since we have decided what piece this will be
-        //this.pieceSet.Clear();
+        this.validPieces.Clear();
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
     public void CollapseRandom()
     {
-        //if(!this.pieceSet.Any())
+        if(!this.possiblePieces.Any())
         {
             Debug.Log("Attempted to collapse slot at " + this.position + " with an empty piece set!");
             throw new Exception("Slot cannot collapse with empty piece set");
@@ -80,22 +77,51 @@ public class Slot
             throw new Exception("Slot is already collapsed");
         }
 
-        //TODO: Randomly select a piece from the piece set
-    }
-
-/*
-    //Remove a piece from the slots piece set. This occurs when another slot has been collapsed and the options available to this slot are changed
-    public void RemovePieces(PieceSet toRemove)
-    {
-        PieceSet removable = toRemove.Intersect(this.pieceSet);
-        this.pieceSet.Remove(removable);
-
-        if(this.pieceSet.Empty)
+        int idx = (int)Randomness.Instance.RandomUniformFloat(0, this.validPieces.Count);
+        this.piece = this.validPieces[idx];
+        if(this.piece == null)
         {
-            Debug.Log("Empty piece set after remove at slot in position " + this.position + "!");
-            throw new Exception("Slot cannot collapse with empty piece set");
+            Debug.Log("Attempted to randomly choose possiblePiece " + idx + " which was a null piece!");
+            throw new Exception("Slot cannot collapse to null piece");
         }
+
+        //Clear the valid piece list since we already picked our own piece
+        this.validPieces.Clear();
     }
-*/
+
+    public int GetEntropy()
+    {
+        if(active)
+            return validPieces.Count;
+        
+        return -1;
+    }
+
+    public bool Constrain(List<Piece> newValidPieces)
+    {
+        bool success = true;
+        //First check if any of the passed pieces exist within our current set of pieces
+        //https://stackoverflow.com/questions/11092930/check-if-listt-contains-any-of-another-list
+        success &= this.validPieces.Any(x => newValidPieces.Any(y => y== x));
+
+        Debug.Log(success);
+
+        //If none of those pieces exist in our current set then we are over constrained
+        //If that occurs we need to restart the WFC on this room. We could add some kind of "undo" feature here to improve performance
+        if(!success)
+            return false;
+
+        //Otherwise constrain the remaining valid pieces to the intersection between the two lists
+        this.validPieces = (List<Piece>) this.validPieces.AsQueryable().Intersect(newValidPieces);
+
+        //If there is only a single valid piece remaining, collapse to that piece
+        if(this.validPieces.Count == 1)
+        {
+            this.Collapse(this.validPieces[0]);
+        }
+
+        return success;
+
+    }
 
 }

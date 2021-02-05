@@ -27,4 +27,6 @@ public class TestPieces
 	public static Piece TestRoomPieceDoor = new Piece("TestRoomPieceDoor", TestRoomPieceDoor_prefab, TestRoomPieceDoor_valid_neighbors);
 	public static Piece TestRoomPiecePit = new Piece("TestRoomPiecePit", TestRoomPiecePit_prefab, TestRoomPiecePit_valid_neighbors);
 	public static Piece TestRoomPieceWall = new Piece("TestRoomPieceWall", TestRoomPieceWall_prefab, TestRoomPieceWall_valid_neighbors);
+
+	public static List<Piece> all_TestPieces_pieces = new List<Piece> {TestRoomPiece, TestRoomPiece2, TestRoomPieceCorner, TestRoomPieceDoor, TestRoomPiecePit, TestRoomPieceWall};
 }

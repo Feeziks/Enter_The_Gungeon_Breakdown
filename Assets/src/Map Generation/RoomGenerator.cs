@@ -44,13 +44,31 @@ public class RoomGenerator
         // determine the number of slots by the current level and difficulty
         int numSlots = GetNumSlots(level, difficulty);
 
+        //Determine which piece set to use
+        int pieceSetIdx = (int)Randomness.Instance.RandomUniformFloat(0, MapGeneration.Globals.NUM_FLOOR_TYPES);
+        List<Piece> pieceSet = null;
+
+        switch(pieceSetIdx)
+        {
+            case 0: //Test Pieces 
+                pieceSet = new List<Piece>(TestPieces.all_TestPieces_pieces);
+                break;
+            case 1: //Forest Pieces
+                pieceSet = new List<Piece>(ForestPieces.all_ForestPieces_pieces);
+                break;
+            default: //Error
+                Debug.LogError("This shouldnt happen");
+                break;
+
+        }
+
         //Create the slots
         roomSlots = new Slot[numSlots, numSlots];
         for(int x = 0; x < numSlots; x++)
         {
             for(int y = 0; y < numSlots; y++)
             {
-                roomSlots[x, y] = new Slot(new Vector2Int(x, y));
+                roomSlots[x, y] = new Slot(new Vector2Int(x, y), pieceSet);
             }
         }
 
@@ -58,7 +76,12 @@ public class RoomGenerator
         DetermineSlotActivity(numSlots);
 
         //Next we collapse the active slots following the WFC algo
-        
+        WaveFunctionCollapse.SetSlots(ref roomSlots);
+
+        while(!WaveFunctionCollapse.IsCollapsed())
+        {
+            WaveFunctionCollapse.Iterate();
+        }
 
         return null;
     }
