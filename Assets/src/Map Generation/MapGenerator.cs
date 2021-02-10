@@ -48,10 +48,33 @@ public class MapGenerator
         //Get a number of points for this map
         int totalPoints = CalculateMapPoints(level, difficulty);
         int currPoints = totalPoints;
+
+        //TODO: Remove this once testing is fleshed out
+        currPoints = 1;
+
+        //Determine which piece set to use
+        int pieceSetIdx = (int)Randomness.Instance.RandomUniformFloat(0, MapGeneration.Globals.NUM_FLOOR_TYPES);
+        List<Piece> pieceSet = null;
+
+        //TODO: Remove this when done with testing
+        pieceSetIdx = 0;
+        switch(pieceSetIdx)
+        {
+            case 0: //Test Pieces 
+                pieceSet = new List<Piece>(TestPieces.all_TestPieces_pieces);
+                break;
+            case 1: //Forest Pieces
+                pieceSet = new List<Piece>(ForestPieces.all_ForestPieces_pieces);
+                break;
+            default: //Error
+                Debug.LogError("This shouldnt happen");
+                break;
+
+        }
         //Generate rooms until we are out of points
         do
         {
-            Room thisRoom = RoomGenerator.Instance.GenerateRoom(level, difficulty);
+            Room thisRoom = RoomGenerator.Instance.GenerateRoom(level, difficulty, pieceSet);
             myMap.AddRoom(thisRoom);
             currPoints -= thisRoom.cost;
         }

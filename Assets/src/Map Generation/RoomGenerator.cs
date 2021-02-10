@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System;
 using UnityEngine;
 
 public class RoomGenerator
@@ -35,7 +38,7 @@ public class RoomGenerator
     #endregion
 
     //public methods
-    public Room GenerateRoom(int level, int difficulty)
+    public Room GenerateRoom(int level, int difficulty, List<Piece> pieceSet)
     {
         //Generate a new room based on the given level and difficulty
 
@@ -43,24 +46,6 @@ public class RoomGenerator
 
         // determine the number of slots by the current level and difficulty
         int numSlots = GetNumSlots(level, difficulty);
-
-        //Determine which piece set to use
-        int pieceSetIdx = (int)Randomness.Instance.RandomUniformFloat(0, MapGeneration.Globals.NUM_FLOOR_TYPES);
-        List<Piece> pieceSet = null;
-
-        switch(pieceSetIdx)
-        {
-            case 0: //Test Pieces 
-                pieceSet = new List<Piece>(TestPieces.all_TestPieces_pieces);
-                break;
-            case 1: //Forest Pieces
-                pieceSet = new List<Piece>(ForestPieces.all_ForestPieces_pieces);
-                break;
-            default: //Error
-                Debug.LogError("This shouldnt happen");
-                break;
-
-        }
 
         //Create the slots
         roomSlots = new Slot[numSlots, numSlots];
@@ -75,12 +60,15 @@ public class RoomGenerator
         // determine which slots will be "active" and which will be "inactive"
         DetermineSlotActivity(numSlots);
 
+        PrintSlots(numSlots, true);
+
         //Next we collapse the active slots following the WFC algo
         WaveFunctionCollapse.SetSlots(ref roomSlots);
 
         while(!WaveFunctionCollapse.IsCollapsed())
         {
             WaveFunctionCollapse.Iterate();
+            PrintSlots(numSlots, true);
         }
 
         return null;
@@ -103,7 +91,7 @@ public class RoomGenerator
         int startX = (int)Randomness.Instance.RandomUniformFloat(1, numSlots);
         int startY = (int)Randomness.Instance.RandomUniformFloat(1, numSlots);
 
-        roomSlots[startX, startY].active = true;
+        roomSlots[startX, startY].SetActive();
         activeSlots.Add(new Vector2Int(startX, startY));
         numActiveSlots++;
 
@@ -135,9 +123,9 @@ public class RoomGenerator
                 x = (int)Randomness.Instance.RandomUniformFloat(xfloor, xceil);
                 y = (int)Randomness.Instance.RandomUniformFloat(yfloor, yceil);
                 nextSlot = new Vector2Int(thisSlot.x + x, thisSlot.y + y);
-            }while(roomSlots[nextSlot.x, nextSlot.y].active);
+            }while(roomSlots[nextSlot.x, nextSlot.y].GetActive());
 
-            roomSlots[nextSlot.x, nextSlot.y].active = true;
+            roomSlots[nextSlot.x, nextSlot.y].SetActive();
             activeSlots.Add(nextSlot);
             numActiveSlots++;
         }
@@ -159,7 +147,7 @@ public class RoomGenerator
                 if(thisSloty + y < 0 || thisSloty + y >= numSlots)
                     continue;
 
-                if(roomSlots[thisSlotx + x, thisSloty + y].active == false) //If there is at least 1 space adjacent to this piece that is inactive then we are on the edge
+                if(roomSlots[thisSlotx + x, thisSloty + y].GetActive() == false) //If there is at least 1 space adjacent to this piece that is inactive then we are on the edge
                     return true;
             }
         }
@@ -167,19 +155,62 @@ public class RoomGenerator
         return false;
     }
 
-    private void PrintSlots(int numSlots)
+    private void PrintSlots(int numSlots, bool toFile = false)
     {
         //Debugging tool to print out active and inactive slots
         string toPrint = "\n";
+        string toWrite = "\n";
+        string logFilePath = "";
+
+        if(toFile)
+        {
+            logFilePath = "Logs\\MapGeneration_" + ".txt";// + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss") + ".txt";
+            if(!File.Exists(logFilePath))
+            {
+                File.WriteAllText(logFilePath, "Start");
+            }
+        }
+
         for(int y = 0; y < numSlots; y++)
         {
             for(int x = 0; x < numSlots; x++)
             {
-                toPrint += roomSlots[x,y].active + "\t";
+                toPrint += roomSlots[x,y].GetActive() + "\t";
+                
+                if(toFile)
+                {
+                    toWrite += "position: " + roomSlots[x,y].position;
+                    toWrite += "\tActive: " + roomSlots[x,y].GetActive();
+
+                    if(roomSlots[x,y].piece != null)
+                    {
+                        toWrite += "\tPiece: " + roomSlots[x,y].piece.name;    
+                    }
+
+                    toWrite += "\tValid Pieces: ";
+                    if(roomSlots[x,y].validPieces.Any())
+                    {
+                        for(int i = 0; i < roomSlots[x,y].validPieces.Count; i++)
+                        {
+                            toWrite += roomSlots[x,y].validPieces[i].name + ", ";
+                        }
+                    }
+                    else
+                    {
+                        toWrite += "None";
+                    }
+
+                    toWrite += "\n";
+                }
             }
+            
             toPrint += "\n";
         }
 
         Debug.Log(toPrint);
+        if(toFile)
+        {
+            File.AppendAllText(logFilePath, toWrite);
+        }
     }
 }

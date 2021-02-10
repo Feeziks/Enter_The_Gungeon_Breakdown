@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public static class WaveFunctionCollapse
@@ -62,37 +63,33 @@ public static class WaveFunctionCollapse
         Vector2Int[] neighbors = new Vector2Int[(int)MapGeneration.Direction.DIRECTION_LENGTH];
         int neighborsIdx = 5;
 
-        //init the neighbors array
-        for(int i = 0; i < (int)MapGeneration.Direction.DIRECTION_LENGTH; i++)
-        {
-            neighbors[i] = new Vector2Int(-1, -1);
-        }
+        Vector2Int[] neighborOffsets = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(1, -1),
+                                       new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1),
+                                       new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int(-1, -1) };
 
         //Get the valid neighbors for the pieces next to our starting slot
-        for(int x = -1; x <= 1; x++)
+        for(int i = 0; i < neighborOffsets.Length; i++)
         {
-            for(int y = -1; y <= 1; y++)
-            {
-                if(x == 0 && y == 0) //Skip when looking at ourselves
-                    continue;
+            int x = neighborOffsets[i].x;
+            int y = neighborOffsets[i].y;
 
-                if(thisSlotCoords.x + x < 0 || thisSlotCoords.x + x >= m_slots.GetLength(0)) //Do not check for neighbors that dont exist
-                    continue;
-                
-                if(thisSlotCoords.y + y < 0 || thisSlotCoords.y + y >= m_slots.GetLength(1)) //Do not check for neighbors that dont exist
-                    continue;
+            neighbors[i] = new Vector2Int(-1, -1);
 
-                if(!m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].active) //Do not check inactive slots
-                    continue;
+            if(thisSlotCoords.x + x < 0 || thisSlotCoords.x + x >= m_slots.GetLength(0)) //Do not check for neighbors that dont exist
+                continue;
+            
+            if(thisSlotCoords.y + y < 0 || thisSlotCoords.y + y >= m_slots.GetLength(1)) //Do not check for neighbors that dont exist
+                continue;
 
-                if(m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].IsCollapsed()) //Skip if the slot is already collapsed
-                    continue;
+            if(!m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].GetActive()) //Do not check inactive slots
+                continue;
+            
 
-                //Add this valid neighboring slot into our return array
-                neighbors[neighborsIdx % (int)MapGeneration.Direction.DIRECTION_LENGTH] = new Vector2Int(thisSlotCoords.x + x, thisSlotCoords.y + y);
-                neighborsIdx++;
-            }
+            if(m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].IsCollapsed()) //Skip if the slot is already collapsed
+                continue;
 
+            //Add this valid neighboring slot into our return array
+            neighbors[i] = new Vector2Int(thisSlotCoords.x + x, thisSlotCoords.y + y);
         }
         
         return neighbors;
@@ -100,43 +97,33 @@ public static class WaveFunctionCollapse
 
     private static void Propagate(Vector2Int startingSlot)
     {
-        Debug.Log("Propagating");
-
         Stack myStack = new Stack();
         myStack.Push(startingSlot);
+
+        string logFilePath = "Logs\\Propagation.txt";
+        File.WriteAllText(logFilePath, "");
 
         while(myStack.Count != 0)
         {
             Vector2Int thisSlotCoords = (Vector2Int)myStack.Pop();
 
+            File.AppendAllText(logFilePath, "Propagating from slot at position : " + thisSlotCoords.x + ", " + thisSlotCoords.y + "\n");
+
             //Get all the neighbors
             Vector2Int[] neighbors = GetNeighbors(thisSlotCoords);
 
-            //Now begin updating the neighbors, constrain their possible pieces list to the valid neighbors list of our current piece
-            for(int i = 0; i < (int)MapGeneration.Direction.DIRECTION_LENGTH; i++)
+            //Iterate through the list of valid neighbors
+            for(int neighborIdx = 0; neighborIdx < neighbors.Length; neighborIdx++)
             {
-                //Check for neighbor validity
-                if(neighbors[i] != new Vector2Int(-1, -1))
+                //Is this neighbor valid?
+                if(neighbors[neighborIdx] != new Vector2Int(-1, -1))
                 {
-                    //Constrain the neighbors to the valid neighbor list for our collapsed slot
-                    //Get the valid neighbor list for this piece in this direction
-                    List<Piece> theseValidNeighbors = new List<Piece>();
-                    for(int j = 0; j < m_slots[thisSlotCoords.x, thisSlotCoords.y].possiblePieces.Count; j++)
-                    {
-                        //Get the valid neighbors for the piece?
-                        if(m_slots[thisSlotCoords.x, thisSlotCoords.y].piece.validNeighbors[i, j] != -1)
-                        {
-                            theseValidNeighbors.Add(m_slots[thisSlotCoords.x, thisSlotCoords.y].possiblePieces[j]);
-                        }
-                    }
+                    
+                    //For each valid neighbor in our list, constrain its list of valid neighbors to the list of valid neighbors for this slot
 
-                    bool pass = m_slots[neighbors[i].x, neighbors[i].y].Constrain(theseValidNeighbors);
-
-                    //Add this to the stack if its not already there
-                    if(!myStack.Contains(neighbors[i]))
-                        myStack.Push(neighbors[i]);
                 }
             }
+            
         }
 
 

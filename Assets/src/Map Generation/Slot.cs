@@ -22,9 +22,8 @@ public class Slot
 
     //The gameobject for this slot
     public GameObject go;
-    
-    //Is this slot "active"
-    public bool active;
+
+    private bool active;
 
     //Check if this slot has already been collapsed (which means that the piece that will fill in this slot has already been determined)
     public bool IsCollapsed()
@@ -44,7 +43,24 @@ public class Slot
         this.position = position;
         this.active = false;
         this.possiblePieces = pieceSet;
-        this.validPieces = pieceSet;
+        this.validPieces = new List<Piece>(); //Empty list to start, until set as active slot
+    }
+
+    public void SetActive()
+    {
+        this.active = true;
+        this.validPieces = new List<Piece>(this.possiblePieces);
+    }
+
+    public void SetInactive()
+    {
+        this.active = false;
+        this.validPieces.Clear();
+    }
+
+    public bool GetActive()
+    {
+        return this.active;
     }
 
     //Collapse this slot to a specific piece, meaning, determine the piece that will be chosen to be placed here
@@ -58,8 +74,11 @@ public class Slot
 
         this.piece = piece;
 
+        Debug.Log("Collapsed slot at position : " + this.position + " to piece: " + this.piece.name);
+
         //Empty the piece set since we have decided what piece this will be
         this.validPieces.Clear();
+        this.validPieces.Add(this.piece);
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
@@ -85,8 +104,11 @@ public class Slot
             throw new Exception("Slot cannot collapse to null piece");
         }
 
+        Debug.Log("Randomly Collapsed slot at position : " + this.position + " to piece: " + this.piece.name);
+
         //Clear the valid piece list since we already picked our own piece
         this.validPieces.Clear();
+        this.validPieces.Add(this.piece);
     }
 
     public int GetEntropy()
@@ -104,15 +126,14 @@ public class Slot
         //https://stackoverflow.com/questions/11092930/check-if-listt-contains-any-of-another-list
         success &= this.validPieces.Any(x => newValidPieces.Any(y => y== x));
 
-        Debug.Log(success);
-
         //If none of those pieces exist in our current set then we are over constrained
         //If that occurs we need to restart the WFC on this room. We could add some kind of "undo" feature here to improve performance
         if(!success)
             return false;
 
         //Otherwise constrain the remaining valid pieces to the intersection between the two lists
-        this.validPieces = (List<Piece>) this.validPieces.AsQueryable().Intersect(newValidPieces);
+        //this.validPieces = (List<Piece>) this.validPieces.AsQueryable().Intersect(newValidPieces);
+        this.validPieces = this.validPieces.Intersect(newValidPieces).ToList();
 
         //If there is only a single valid piece remaining, collapse to that piece
         if(this.validPieces.Count == 1)
