@@ -63,7 +63,7 @@ public class RoomGenerator
         PrintSlots(numSlots, true);
 
         //Next we collapse the active slots following the WFC algo
-        WaveFunctionCollapse.SetSlots(ref roomSlots);
+        WaveFunctionCollapse.SetSlots(ref roomSlots, pieceSet);
 
         while(!WaveFunctionCollapse.IsCollapsed())
         {
