@@ -29,17 +29,6 @@ public class MapManager : MonoBehaviour
         }
         int difficulty = difficultyInput.value;
         m_map = MapGenerator.Instance.GenerateNewMap(level, difficulty);
-
-        //Display the new map
-        SpriteRenderer sr = display.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        if(sr == null)
-        {
-            Debug.Log("No renderer");
-            return;
-        }
-        Texture2D tx = m_map.GetRoomTexture(0);
-        Sprite newSprite = Sprite.Create(tx, new Rect(0, 0, tx.width, tx.height), new Vector2(0, 0));
-        sr.sprite = newSprite;
     }
 
     //Private methods

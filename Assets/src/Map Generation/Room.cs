@@ -14,20 +14,27 @@ public class Room
     //Constructors
     public Room()
     {
+        this.cost = 1;
+        this.name = "Unamed Room";
 
+        this.Container = new GameObject(this.name);
     }
 
-    public Room(int c)
+    public Room(int c, string n)
     {
-        cost = c;
+        this.cost = c;
+        this.name = n;
+
+        this.Container = new GameObject(this.name);
     }
 
     //public members
     public int cost { get; }
-    public Texture2D texture;
+    public string name {get; }
+    public GameObject Container {get; }
 
     //private members
-
+    
     //public methods
 
     //private methods

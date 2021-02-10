@@ -40,10 +40,10 @@ public class RoomGenerator
     //public methods
     public Room GenerateRoom(int level, int difficulty, List<Piece> pieceSet)
     {
+        Room toReturn = new Room(1, "test name");
+
         //Generate a new room based on the given level and difficulty
-
         // First create the outline of the room - this will be some number of slots in some shape
-
         // determine the number of slots by the current level and difficulty
         int numSlots = GetNumSlots(level, difficulty);
 
@@ -60,18 +60,19 @@ public class RoomGenerator
         // determine which slots will be "active" and which will be "inactive"
         DetermineSlotActivity(numSlots);
 
-        PrintSlots(numSlots, true);
-
         //Next we collapse the active slots following the WFC algo
         WaveFunctionCollapse.SetSlots(ref roomSlots, pieceSet);
 
         while(!WaveFunctionCollapse.IsCollapsed())
         {
             WaveFunctionCollapse.Iterate();
-            PrintSlots(numSlots, true);
         }
 
-        return null;
+        //The wave function is complete and our room is ready
+        //Add the active slots with prefabs instantiated into the room
+        AddCollapsedSlotsToRoom(ref toReturn);
+
+        return toReturn;
     }
 
     //private methods
@@ -153,6 +154,20 @@ public class RoomGenerator
         }
 
         return false;
+    }
+
+    private void AddCollapsedSlotsToRoom(ref Room r)
+    {
+        for(int x = 0; x < roomSlots.GetLength(0); x++)
+        {
+            for(int y = 0; y < roomSlots.GetLength(1); y++)
+            {
+                if(roomSlots[x,y].IsCollapsed())
+                {
+                    roomSlots[x,y].go.transform.parent = r.Container.transform;
+                }
+            }
+        }
     }
 
     private void PrintSlots(int numSlots, bool toFile = false)

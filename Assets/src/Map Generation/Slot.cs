@@ -81,8 +81,7 @@ public class Slot
         this.validPieces.Add(this.piece);
 
         //Set the gameobject to the prefab for the piece
-        this.go = this.piece.prefab;
-        UnityEngine.Object.Instantiate(this.go, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
@@ -120,7 +119,7 @@ public class Slot
 
     public int GetEntropy()
     {
-        if(active)
+        if(active && !this.IsCollapsed())
             return validPieces.Count;
         
         return -1;

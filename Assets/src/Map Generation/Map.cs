@@ -24,16 +24,6 @@ public class Map
         rooms.Add(newRoom);
     }
 
-    public Texture2D GetRoomTexture(int roomNumber)
-    {
-        if(roomNumber < 0 || roomNumber >= rooms.Count)
-        {
-            return null;
-        }
-
-        return rooms[roomNumber].texture;
-    }
-
     public void ClearMap()
     {
         rooms.Clear();
