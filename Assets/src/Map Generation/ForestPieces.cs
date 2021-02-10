@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ForestPieces
 {
-	private static GameObject forest_piece_for_test_prefab = Resources.Load("Resources\\RoomPieces\\ForestPieces\\forest_piece_prefab") as GameObject;
+	private static GameObject forest_piece_for_test_prefab = Resources.Load("RoomPieces/ForestPieces/forest_piece_prefab") as GameObject;
 
 
 	private static int[,] forest_piece_for_test_valid_neighbors = new int[8, 1] { { -1}, { -1}, { -1}, { -1}, { -1}, { -1}, { -1}, { -1} };

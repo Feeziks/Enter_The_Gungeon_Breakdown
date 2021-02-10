@@ -79,6 +79,10 @@ public class Slot
         //Empty the piece set since we have decided what piece this will be
         this.validPieces.Clear();
         this.validPieces.Add(this.piece);
+
+        //Set the gameobject to the prefab for the piece
+        this.go = this.piece.prefab;
+        UnityEngine.Object.Instantiate(this.go, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
@@ -92,7 +96,7 @@ public class Slot
 
         if(this.IsCollapsed())
         {
-            Debug.Log("Attempting to collapse the slot at " + this.position + " which has already been collapsed!");
+            Debug.Log("Attempting to randomly collapse the slot at " + this.position + " which has already been collapsed!");
             throw new Exception("Slot is already collapsed");
         }
 
@@ -109,6 +113,9 @@ public class Slot
         //Clear the valid piece list since we already picked our own piece
         this.validPieces.Clear();
         this.validPieces.Add(this.piece);
+
+        //Set the gameobject to the prefab for the piece
+        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
     }
 
     public int GetEntropy()

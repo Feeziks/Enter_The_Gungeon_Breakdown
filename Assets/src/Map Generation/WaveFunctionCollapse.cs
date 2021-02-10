@@ -12,6 +12,7 @@ public static class WaveFunctionCollapse
     private static Slot[,] m_slots;
     private static bool collapsed;
     private static List<Piece> pieceSet;
+    private static int[,] propCounts;
 
     //public methods
     public static void SetSlots(ref Slot[,] s, List<Piece> ps)
@@ -19,6 +20,16 @@ public static class WaveFunctionCollapse
         m_slots = s;
         collapsed = false;
         pieceSet = ps;
+
+        propCounts = new int[m_slots.GetLength(0), m_slots.GetLength(1)];
+
+        for(int x = 0; x < m_slots.GetLength(0); x++)
+        {
+            for(int y = 0; y < m_slots.GetLength(1); y++)
+            {
+                propCounts[x,y] = 0;
+            }
+        }
     }
 
     public static void Iterate()
@@ -109,6 +120,8 @@ public static class WaveFunctionCollapse
         {
             Vector2Int thisSlotCoords = (Vector2Int)myStack.Pop();
 
+            propCounts[thisSlotCoords.x, thisSlotCoords.y]++;
+
             File.AppendAllText(logFilePath, "Propagating from slot at position : " + thisSlotCoords.x + ", " + thisSlotCoords.y + "\n");
 
             //Get all the neighbors
@@ -163,24 +176,35 @@ public static class WaveFunctionCollapse
                     //Add this neighbor to the stack if it isnt there already
                     File.AppendAllText(logFilePath, "Adding " + neighbors[neighborIdx] + " to the stack.\n");
 
-                    if(!myStack.Contains(neighbors[neighborIdx]))
+                    //Dont add that neighbor to the stack if its already been constrained several times
+                    //This is done to prevent a situation where neighboring slots oscillate between each other forever
+                    if(!myStack.Contains(neighbors[neighborIdx]) && propCounts[neighbors[neighborIdx].x, neighbors[neighborIdx].y] < 4)
                     {
                         myStack.Push(neighbors[neighborIdx]);
                     }
-
-                    File.AppendAllText(logFilePath, "Current stack contents: ");
-                    foreach(Vector2Int obj in myStack)
-                    {
-                        File.AppendAllText(logFilePath, "(" + obj.x + ", " + obj.y + ") ");
-                    }
-
                 }
             }
             
         }
 
+        collapsed = CheckCollapsed();
+    }
 
-        collapsed = true;
+    private static bool CheckCollapsed()
+    {
+        for(int x = 0; x < m_slots.GetLength(0); x++)
+        {
+            for(int y = 0; y < m_slots.GetLength(1); y++)
+            {
+                //If any slot is NOT collapsed and is active then the function has not collapsed
+                if(m_slots[x,y].IsCollapsed() == false && m_slots[x,y].GetActive())
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
 }

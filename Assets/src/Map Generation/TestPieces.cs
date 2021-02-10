@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class TestPieces
 {
-	private static GameObject TestRoomPiece_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomDoorPrefab") as GameObject;
-	private static GameObject TestRoomPiece2_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomPiece2Prefab") as GameObject;
-	private static GameObject TestRoomPieceCorner_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomPieceCornerPrefab") as GameObject;
-	private static GameObject TestRoomPieceDoor_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomPiecePitPrefab") as GameObject;
-	private static GameObject TestRoomPiecePit_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomPiecePrefab") as GameObject;
-	private static GameObject TestRoomPieceWall_prefab = Resources.Load("Resources\\RoomPieces\\TestPieces\\TestRoomPieceWallPrefab") as GameObject;
+	private static GameObject TestRoomPiece_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomDoorPrefab") as GameObject;
+	private static GameObject TestRoomPiece2_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomPiece2Prefab") as GameObject;
+	private static GameObject TestRoomPieceCorner_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomPieceCornerPrefab") as GameObject;
+	private static GameObject TestRoomPieceDoor_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomPiecePitPrefab") as GameObject;
+	private static GameObject TestRoomPiecePit_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomPiecePrefab") as GameObject;
+	private static GameObject TestRoomPieceWall_prefab = Resources.Load("RoomPieces/TestPieces/TestRoomPieceWallPrefab") as GameObject;
 
 
 	private static int[,] TestRoomPiece_valid_neighbors = new int[8, 6] { { -1, 1, -1, -1, 4, -1}, { -1, 1, -1, -1, 4, -1}, { -1, 1, -1, 3, 4, 5}, { -1, 1, -1, 3, 4, 5}, { -1, 1, -1, -1, 4, -1}, { -1, 1, 2, 3, 4, 5}, { -1, 1, 2, 3, 4, 5}, { -1, 1, -1, -1, 4, -1} };

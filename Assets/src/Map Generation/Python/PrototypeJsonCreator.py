@@ -105,7 +105,7 @@ if __name__ == "__main__":
             outfile.write("{\n")
 
             for prototype, _ in dictionary[subDict].items():
-                outfile.write("\tprivate static GameObject " + prototype + "_prefab = Resources.Load(\"" + repr(dictionary[subDict][prototype]['prefab']).strip("'") + "\") as GameObject;\n")
+                outfile.write("\tprivate static GameObject " + prototype + "_prefab = Resources.Load(\"" + repr(dictionary[subDict][prototype]['prefab']).replace("\\\\", "/").split('Resources/')[1].strip("'") + "\") as GameObject;\n")
 
             outfile.write("\n\n")
 
