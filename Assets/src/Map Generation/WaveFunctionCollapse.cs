@@ -14,6 +14,10 @@ public static class WaveFunctionCollapse
     private static List<Piece> pieceSet;
     private static int[,] propCounts;
 
+    private static Vector2Int invalidNeighbor = new Vector2Int(-1, -1);
+    private static Vector2Int inactiveNeighbor = new Vector2Int(-2, -2);
+    private static Vector2Int collapsedNeighbor = new Vector2Int(-3, -3);
+
     //public methods
     public static void SetSlots(ref Slot[,] s, List<Piece> ps)
     {
@@ -22,19 +26,11 @@ public static class WaveFunctionCollapse
         pieceSet = ps;
 
         propCounts = new int[m_slots.GetLength(0), m_slots.GetLength(1)];
-
-        for(int x = 0; x < m_slots.GetLength(0); x++)
-        {
-            for(int y = 0; y < m_slots.GetLength(1); y++)
-            {
-                propCounts[x,y] = 0;
-            }
-        }
+        ResetPropCounts();
     }
 
     public static void Iterate()
     {
-        //Do things
         //Get the minimum entropy slot
         Vector2Int minEntropy = GetMinimumEntropy();
         //Collapse that slot
@@ -49,6 +45,17 @@ public static class WaveFunctionCollapse
     }
 
     //Private methods
+    private static void ResetPropCounts()
+    {
+        for(int x = 0; x < m_slots.GetLength(0); x++)
+        {
+            for(int y = 0; y < m_slots.GetLength(1); y++)
+            {
+                propCounts[x,y] = 0;
+            }
+        }
+    }
+
     private static Vector2Int GetMinimumEntropy()
     {
         int min = 1000000000;
@@ -74,7 +81,6 @@ public static class WaveFunctionCollapse
     {
         //Get all valid neighbors for this slot, return them in a way that you can access with the directions enum
         Vector2Int[] neighbors = new Vector2Int[(int)MapGeneration.Direction.DIRECTION_LENGTH];
-        int neighborsIdx = 5;
 
         Vector2Int[] neighborOffsets = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(1, -1),
                                        new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1),
@@ -86,20 +92,28 @@ public static class WaveFunctionCollapse
             int x = neighborOffsets[i].x;
             int y = neighborOffsets[i].y;
 
-            neighbors[i] = new Vector2Int(-1, -1);
+            neighbors[i] = invalidNeighbor;
 
             if(thisSlotCoords.x + x < 0 || thisSlotCoords.x + x >= m_slots.GetLength(0)) //Do not check for neighbors that dont exist
                 continue;
             
             if(thisSlotCoords.y + y < 0 || thisSlotCoords.y + y >= m_slots.GetLength(1)) //Do not check for neighbors that dont exist
+            {
+                neighbors[i] = inactiveNeighbor;
                 continue;
+            }
 
             if(!m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].GetActive()) //Do not check inactive slots
+            {
+                neighbors[i] = inactiveNeighbor;
                 continue;
+            }
             
-
             if(m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].IsCollapsed()) //Skip if the slot is already collapsed
+            {
+                neighbors[i] = collapsedNeighbor;
                 continue;
+            }
 
             //Add this valid neighboring slot into our return array
             neighbors[i] = new Vector2Int(thisSlotCoords.x + x, thisSlotCoords.y + y);
@@ -127,61 +141,67 @@ public static class WaveFunctionCollapse
             //Get all the neighbors
             Vector2Int[] neighbors = GetNeighbors(thisSlotCoords);
 
-            //Iterate through the list of valid neighbors
+            //Iterate through the list of neighbors
             for(int neighborIdx = 0; neighborIdx < neighbors.Length; neighborIdx++)
             {
                 //Is this neighbor valid?
-                if(neighbors[neighborIdx] != new Vector2Int(-1, -1))
+                if(neighbors[neighborIdx] == invalidNeighbor || neighbors[neighborIdx] == collapsedNeighbor)
                 {
-                    //For each valid neighbor in our list, constrain its list of valid neighbors to the list of valid neighbors for this slot
+                    //If it is out of bounds or already collapsed skip this neighbor
+                    continue;
+                }
 
-                    //TODO: Create a list that includes all the valid neighbors for each possible piece at this location?
-                    //First get the list of valid neighbors for the current piece(s) in the current direction
-                    List<Piece> theseValidNeighbors = new List<Piece>();
+                //For each valid neighbor in our list, constrain its list of valid neighbors
+                // to the list of valid neighbors for this slot
 
-                    for(int validPieceThisSlot = 0; validPieceThisSlot < m_slots[thisSlotCoords.x, thisSlotCoords.y].validPieces.Count; validPieceThisSlot++)
+                //First get the list of valid neighbors for the current piece(s) in the current direction
+                List<Piece> theseValidNeighbors = new List<Piece>();
+
+                for(int validPieceThisSlot = 0; validPieceThisSlot < m_slots[thisSlotCoords.x, thisSlotCoords.y].validPieces.Count; validPieceThisSlot++)
+                {
+                    //Get the valid piece for this iteration through this slots valid pieces
+                    Piece thisValidPiece = m_slots[thisSlotCoords.x, thisSlotCoords.y].validPieces[validPieceThisSlot];
+
+                    //Get the valid neighbors in the current direction for this valid piece
+                    for(int i = 0; i < thisValidPiece.validNeighbors.GetLength(1); i++)
                     {
-                        //Get the valid piece for this iteration through this slots valid pieces
-                        Piece thisValidPiece = m_slots[thisSlotCoords.x, thisSlotCoords.y].validPieces[validPieceThisSlot];
-
-                        //Get the valid neighbors in the current direction for this valid piece
-                        for(int i = 0; i < thisValidPiece.validNeighbors.GetLength(1); i++)
+                        //Get the index into the piece set list for the neighbor
+                        int thisValidPieceNeighborIdx = thisValidPiece.validNeighbors[neighborIdx, i];
+                        //Check for valid neighbors when the neighbor for that direction is Inactive or out of bounds
+                        //essentially ensure there is a wall or some kind of bound at those locations
+                        Piece thisValidNeighbor = new Piece();
+                        if(neighbors[neighborIdx] != inactiveNeighbor)
                         {
-                            //Get the index into the piece set list for the neighbor
-                            int thisValidPieceNeighborIdx = thisValidPiece.validNeighbors[neighborIdx, i];
-                            //Check if that neighbor is valid or not
-                            if(thisValidPieceNeighborIdx == -1)
-                                continue;
+                            if(thisValidPieceNeighborIdx != -1)
+                                thisValidNeighbor = pieceSet[thisValidPieceNeighborIdx];
+                        }
 
-                            //Get the valid piece from the piece set
-                            Piece thisValidNeighbor = pieceSet[thisValidPieceNeighborIdx];
-                            //Check if that piece is not already in our list to constrain to
-                            if(!theseValidNeighbors.Contains(thisValidNeighbor))
-                            {
-                                //Add that piece to the list
-                                theseValidNeighbors.Add(thisValidNeighbor);
-                            }
+                        //Check if that piece is not already in our list to constrain to
+                        if(!theseValidNeighbors.Contains(thisValidNeighbor))
+                        {
+                            //Add that piece to the list
+                            theseValidNeighbors.Add(thisValidNeighbor);
                         }
                     }
+                }
 
-                    //Constrain the neighbor to the pieces that are valid to it
-                    bool pass = m_slots[neighbors[neighborIdx].x, neighbors[neighborIdx].y].Constrain(theseValidNeighbors);
+                //Constrain the neighbor to the pieces that are valid to it
+                bool pass = m_slots[neighbors[neighborIdx].x, neighbors[neighborIdx].y].Constrain(theseValidNeighbors);
 
-                    //if we have over constrained a slot we cannot continue
-                    if(!pass)
-                    {
-                        Debug.LogError("Over constrained the slot " + neighbors[neighborIdx] + " while attempting to propagate slot " + thisSlotCoords);
-                    }
+                //if we have over constrained a slot we cannot continue
+                if(!pass)
+                {
+                    Debug.LogError("Over constrained the slot " + neighbors[neighborIdx] + " while attempting to propagate slot " + thisSlotCoords);
+                }
 
-                    //Add this neighbor to the stack if it isnt there already
-                    File.AppendAllText(logFilePath, "Adding " + neighbors[neighborIdx] + " to the stack.\n");
+                //Add this neighbor to the stack if it isnt there already
+                File.AppendAllText(logFilePath, "Adding " + neighbors[neighborIdx] + " to the stack.\n");
 
-                    //Dont add that neighbor to the stack if its already been constrained several times
-                    //This is done to prevent a situation where neighboring slots oscillate between each other forever
-                    if(!myStack.Contains(neighbors[neighborIdx]) && propCounts[neighbors[neighborIdx].x, neighbors[neighborIdx].y] < 4)
-                    {
-                        myStack.Push(neighbors[neighborIdx]);
-                    }
+                //Dont add that neighbor to the stack if its already been constrained several times
+                //This is done to prevent a situation where neighboring slots oscillate between each other forever
+                if(!myStack.Contains(neighbors[neighborIdx]) && propCounts[neighbors[neighborIdx].x, neighbors[neighborIdx].y] < 4)
+                {
+                    myStack.Push(neighbors[neighborIdx]);
                 }
             }
             

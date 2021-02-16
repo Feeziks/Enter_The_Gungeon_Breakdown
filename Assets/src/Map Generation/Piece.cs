@@ -23,6 +23,11 @@ public class Piece
     //Private Members
 
     //Constructors
+    public Piece()
+    {
+
+    }
+    
     public Piece(string n, GameObject p, int[,] v)
     {
         this.name = n;
