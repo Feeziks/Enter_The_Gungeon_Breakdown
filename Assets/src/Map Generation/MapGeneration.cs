@@ -8,7 +8,7 @@ namespace MapGeneration
 	public static class Globals
 	{
 		public static readonly int NUM_FLOOR_TYPES = 2;
-		public static readonly int[] NUM_PIECES_PER_FLOOR = {1, 6};
+		public static readonly int[] NUM_PIECES_PER_FLOOR = {1, 17};
 	}
 
 	//Direction enum

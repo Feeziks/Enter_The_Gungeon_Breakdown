@@ -84,7 +84,7 @@ if __name__ == "__main__":
                 neighbor_list[i] = []
             for other_prototype, _ in dictionary[subDict].items():
                 if(this_prototype != other_prototype):
-                    for idx, _ in enumerate(directions):
+                    for idx, _ in enumerate(directions):                            
                         if(dictionary[subDict][this_prototype]["sockets"][directions[idx]] == dictionary[subDict][other_prototype]["sockets"][directions_reverse[idx]]):
                             neighbor_list[directions[idx]].append(other_prototype)
 

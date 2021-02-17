@@ -113,8 +113,11 @@ public class Slot
         this.validPieces.Clear();
         this.validPieces.Add(this.piece);
 
+        Debug.Log(this.piece.prefab);
+
         //Set the gameobject to the prefab for the piece
         this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+        //this.go = UnityEngine.Object.Instantiate(Resources.Load("RoomPieces/TestPieces/TestRoomPiece3Walls_f") as GameObject, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
     }
 
     public int GetEntropy()
