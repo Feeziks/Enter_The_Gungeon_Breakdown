@@ -89,11 +89,6 @@ if __name__ == "__main__":
                             neighbor_list[directions[idx]].append(other_prototype)
 
             dictionary[subDict][this_prototype]["neighbor_list"] = neighbor_list
-        
-
-    with open('..\\Resources\\Prototypes.json', 'w') as outfile:
-        json.dump(dictionary, outfile, indent=4)
-
 
     for subDict, _ in dictionary.items():
         with open("..\\" + subDict + ".cs", 'w')as outfile:
@@ -101,11 +96,11 @@ if __name__ == "__main__":
             outfile.write("using System.Collections.Generic;\n")
             outfile.write("using UnityEngine;\n")
             outfile.write("\n\n")
-            outfile.write("public class " + subDict + "\n")
+            outfile.write("public static class " + subDict + "\n")
             outfile.write("{\n")
 
             for prototype, _ in dictionary[subDict].items():
-                outfile.write("\tprivate static GameObject " + prototype + "_prefab = Resources.Load(\"" + repr(dictionary[subDict][prototype]['prefab']).replace("\\\\", "/").split('Resources/')[1].strip("'") + "\") as GameObject;\n")
+                outfile.write("\tprivate static string " + prototype + "_prefab_path = \"" + repr(dictionary[subDict][prototype]['prefab']).replace("\\\\", "/").split('Resources/')[1].strip("'") + "\";\n")
 
             outfile.write("\n\n")
 
@@ -142,7 +137,7 @@ if __name__ == "__main__":
             outfile.write("\n\n")
 
             for prototype, _ in dictionary[subDict].items():
-                outfile.write("\tpublic static Piece " + prototype + " = new Piece(\"" + prototype + "\", " + prototype + "_prefab, " + prototype + "_valid_neighbors);\n")
+                outfile.write("\tpublic static Piece " + prototype + " = new Piece(\"" + prototype + "\", " + prototype + "_prefab_path, " + prototype + "_valid_neighbors);\n")
 
             outfile.write("\n")
             outfile.write("\tpublic static List<Piece> all_" + str(subDict) + "_pieces = new List<Piece> {")
@@ -154,7 +149,17 @@ if __name__ == "__main__":
                 else:
                     outfile.write(", " + str(prototype))
 
-            outfile.write("};\n")
+            outfile.write("};\n\n")
+
+            outfile.write("\tpublic static bool Load()\n")
+            outfile.write("\t{\n")
+            outfile.write("\t\tbool success = true;\n\n")
+            outfile.write("\t\tfor(int i = 0; i < all_" + str(subDict) + "_pieces.Count; i++)\n")
+            outfile.write("\t\t{\n")
+            outfile.write("\t\t\tsuccess &= all_" + str(subDict) + "_pieces[i].LoadPrefab();\n")
+            outfile.write("\t\t}\n")
+            outfile.write("\t\treturn success;\n")
+            outfile.write("\t}\n")
 
             outfile.write("}\n")
 

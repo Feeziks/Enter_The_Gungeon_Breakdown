@@ -74,6 +74,7 @@
      <Compile Include="Assets\src\Map Generation\TestPieces.cs" />
      <Compile Include="Assets\src\Map Generation\RoomPiece_SO.cs" />
      <Compile Include="Assets\src\UI_Conversions.cs" />
+     <Compile Include="Assets\src\Map Generation\Kamen.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\src\Map Generation\Art_Inspiration\ETG_Inspiration_Notes.txt" />

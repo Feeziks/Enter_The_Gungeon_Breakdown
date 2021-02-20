@@ -49,13 +49,8 @@ public class RoomGenerator
 
         //Create the slots
         roomSlots = new Slot[numSlots, numSlots];
-        for(int x = 0; x < numSlots; x++)
-        {
-            for(int y = 0; y < numSlots; y++)
-            {
-                roomSlots[x, y] = new Slot(new Vector2Int(x, y), pieceSet);
-            }
-        }
+        ResetSlots(numSlots, pieceSet);
+
 
         // determine which slots will be "active" and which will be "inactive"
         DetermineSlotActivity(numSlots);
@@ -66,6 +61,15 @@ public class RoomGenerator
         while(!WaveFunctionCollapse.IsCollapsed())
         {
             WaveFunctionCollapse.Iterate();
+
+            if(WaveFunctionCollapse.Failed())
+            {
+                //reset the slots
+                ResetSlots(numSlots, pieceSet);
+                DetermineSlotActivity(numSlots);
+                //Set the WFC slots again to restart the process
+                WaveFunctionCollapse.SetSlots(ref roomSlots, pieceSet);
+            }
         }
 
         //The wave function is complete and our room is ready
@@ -76,10 +80,23 @@ public class RoomGenerator
     }
 
     //private methods
+    private void ResetSlots(int numSlots, List<Piece> pieceSet)
+    {
+        for(int x = 0; x < numSlots; x++)
+        {
+            for(int y = 0; y < numSlots; y++)
+            {
+                roomSlots[x, y] = new Slot(new Vector2Int(x, y), pieceSet);
+            }
+        }
+    }
+
     private int GetNumSlots(int level, int difficulty)
     {
         int numSlots = (int)Mathf.Max(9, level * (difficulty + 1));
         numSlots = (int)Mathf.Sqrt(numSlots);
+
+        numSlots = 5;
         return numSlots;
     }
 

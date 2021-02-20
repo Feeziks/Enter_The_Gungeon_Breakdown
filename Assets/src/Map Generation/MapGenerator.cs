@@ -57,14 +57,20 @@ public class MapGenerator
         List<Piece> pieceSet = null;
 
         //TODO: Remove this when done with testing
-        pieceSetIdx = 0;
+        pieceSetIdx = 2;
         switch(pieceSetIdx)
         {
             case 0: //Test Pieces 
                 pieceSet = new List<Piece>(TestPieces.all_TestPieces_pieces);
+                TestPieces.Load();
                 break;
             case 1: //Forest Pieces
                 pieceSet = new List<Piece>(ForestPieces.all_ForestPieces_pieces);
+                ForestPieces.Load();
+                break;
+            case 2:
+                pieceSet = new List<Piece>(Kamen.all_Kamen_pieces);
+                Kamen.Load();
                 break;
             default: //Error
                 Debug.LogError("This shouldnt happen");
