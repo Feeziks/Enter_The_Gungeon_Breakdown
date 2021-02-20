@@ -81,7 +81,9 @@ public class Slot
         this.validPieces.Add(this.piece);
 
         //Set the gameobject to the prefab for the piece
-        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+        float pieceWidth = this.piece.prefab.GetComponent<SpriteRenderer>().bounds.size.x;
+        float pieceHeight = this.piece.prefab.GetComponent<SpriteRenderer>().bounds.size.y;
+        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x * pieceWidth, this.position.y * pieceHeight, 0), Quaternion.identity);
     }
 
     //Collapse to a random piece, use this if our slot happens to be the first slot chosen (Or maybe other instances too? unsure)
@@ -114,7 +116,9 @@ public class Slot
         this.validPieces.Add(this.piece);
 
         //Set the gameobject to the prefab for the piece
-        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+        float pieceWidth = this.piece.prefab.GetComponent<SpriteRenderer>().bounds.size.x;
+        float pieceHeight = this.piece.prefab.GetComponent<SpriteRenderer>().bounds.size.y;
+        this.go = UnityEngine.Object.Instantiate(this.piece.prefab, new Vector3(this.position.x * pieceWidth, this.position.y * pieceHeight, 0), Quaternion.identity);
     }
 
     public int GetEntropy()
