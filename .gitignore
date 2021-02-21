@@ -6,5 +6,7 @@ Temp/
 UserSettings/
 Builds/
 Assets/src/Map Generation/Art_Inspiration
+*.png~
+*.kra~
 *.kra
 *.kra.meta

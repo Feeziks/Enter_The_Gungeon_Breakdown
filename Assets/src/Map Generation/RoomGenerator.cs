@@ -60,6 +60,7 @@ public class RoomGenerator
 
         while(!WaveFunctionCollapse.IsCollapsed())
         {
+            PrintSlots(numSlots, true);
             WaveFunctionCollapse.Iterate();
 
             if(WaveFunctionCollapse.Failed())
@@ -96,12 +97,14 @@ public class RoomGenerator
         int numSlots = (int)Mathf.Max(9, level * (difficulty + 1));
         numSlots = (int)Mathf.Sqrt(numSlots);
 
-        numSlots = 5;
+        //TODO: Reset this
+        numSlots = 3;
         return numSlots;
     }
 
     private void DetermineSlotActivity(int numSlots)
     {
+        /*
         int numActiveSlots = 0;
         List<Vector2Int> activeSlots = new List<Vector2Int>();
 
@@ -115,7 +118,7 @@ public class RoomGenerator
 
         Vector2Int thisSlot;
 
-        while(numActiveSlots != numSlots)
+        while(numActiveSlots != (int) (numSlots * numSlots) * (3/4))
         {
             //Randomly "walk" from an active edge slot and activate that new slot
 
@@ -146,6 +149,14 @@ public class RoomGenerator
             roomSlots[nextSlot.x, nextSlot.y].SetActive();
             activeSlots.Add(nextSlot);
             numActiveSlots++;
+        }
+        */
+        for(int x = 0; x < numSlots; x++)
+        {
+            for(int y = 0; y < numSlots; y++)
+            {
+                roomSlots[x, y].SetActive();
+            }
         }
         
     }

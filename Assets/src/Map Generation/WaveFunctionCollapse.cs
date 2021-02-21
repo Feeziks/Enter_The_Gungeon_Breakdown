@@ -95,10 +95,13 @@ public static class WaveFunctionCollapse
             {
                 int temp = m_slots[i,j].GetEntropy();
 
-                if(temp < min && temp != -1)
+                if(temp <= min && temp != -1)
                 {
-                    min = temp;
-                    ret = new Vector2Int(i, j);
+                    if(Randomness.Instance.RandomUniformFloat(0, 1) > 0.5f)
+                    {
+                        min = temp;
+                        ret = new Vector2Int(i, j);
+                    }
                 }
             }
         }
@@ -160,7 +163,6 @@ public static class WaveFunctionCollapse
         myStack.Push(startingSlot);
 
         string logFilePath = "Logs\\Propagation.txt";
-        File.WriteAllText(logFilePath, "");
 
         while(myStack.Count != 0)
         {
@@ -228,18 +230,30 @@ public static class WaveFunctionCollapse
                     }
                 }
 
-                //Constrain the neighboring slot
+                
+                if(m_slots[neighbors[i].x, neighbors[i].y].IsCollapsed())
+                {
+                    if(!activeConstraints.Contains(m_slots[neighbors[i].x, neighbors[i].y].piece))
+                    {
+                        Debug.LogError("Overconstrained an already collapsed slot at position: " + neighbors[i]);
+                        failure_status = true;
+                        return false;
+                    }
+                }
                 success = m_slots[neighbors[i].x, neighbors[i].y].Constrain(activeConstraints);
                 if(!success)
                 {
-                    Debug.LogError("Overconstrained the slot at position: " + slotCoords);
+                    Debug.LogError("Overconstrained the slot at position: " + neighbors[i].x + ","  + neighbors[i].y);
                     failure_status = true;
                     return false;
                 }
 
                 //Add that slot onto the stack
-                if(!stack.Contains(neighbors[i]) && propCounts[neighbors[i].x, neighbors[i].y] != MAX_PROP_COUNT)
+                if(!stack.Contains(neighbors[i]))
+                {
+                    File.AppendAllText(logFilePath, "Pushing slot at position: " + neighbors[i].x + ", " + neighbors[i].y + " on to the stack");
                     stack.Push(neighbors[i]);
+                }
             }
         }
 
@@ -304,11 +318,7 @@ public static class WaveFunctionCollapse
     {
         //Get list of active edge slots
         
-        //Check if we already have a cached edge slot list
-        if(!edgeSlots.Any())
-        {
-            edgeSlots = GetEdgeSlots();
-        }
+        edgeSlots = GetEdgeSlots();
 
         //Constrain all the active edge slots
         for(int i = 0; i < edgeSlots.Count; i++)
@@ -374,9 +384,9 @@ public static class WaveFunctionCollapse
             Vector2Int coordsPlusOffset = new Vector2Int(coords.x + x, coords.y + y);
 
             if(coordsPlusOffset.x < 0 || coordsPlusOffset.x >= m_slots.GetLength(0))
-                continue;
+                return true;
             else if(coordsPlusOffset.y < 0 || coordsPlusOffset.y >= m_slots.GetLength(1))
-                continue;
+                return true;
             else if(m_slots[coordsPlusOffset.x, coordsPlusOffset.y].GetActive() == false)
                 return true;
         }

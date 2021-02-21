@@ -134,7 +134,7 @@ public class Slot
         bool success = true;
         //First check if any of the passed pieces exist within our current set of pieces
         //https://stackoverflow.com/questions/11092930/check-if-listt-contains-any-of-another-list
-        success &= this.validPieces.Any(x => newValidPieces.Any(y => y== x));
+        success &= this.validPieces.Any(x => newValidPieces.Any(y => y == x));
 
         //If none of those pieces exist in our current set then we are over constrained
         //If that occurs we need to restart the WFC on this room. We could add some kind of "undo" feature here to improve performance
@@ -146,7 +146,7 @@ public class Slot
         this.validPieces = this.validPieces.Intersect(newValidPieces).ToList();
 
         //If there is only a single valid piece remaining, collapse to that piece
-        if(this.validPieces.Count == 1)
+        if(this.validPieces.Count == 1 && !this.IsCollapsed())
         {
             this.Collapse(this.validPieces[0]);
         }
