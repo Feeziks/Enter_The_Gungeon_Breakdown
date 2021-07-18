@@ -1,0 +1,36 @@
+Length of a "tile" side roughly ~320 ish pixels? maybe a 400 x 400 tile 
+
+lots of hard black borders to make it easy to tell where a wall ends / door starts / enemy model is
+
+Several shades of colors in the wall for shadow effects, repeating patter above bricks for an outline
+
+maybe 4 or 5 colors in the pallete in floor 1
+
+Torches provide nice "glow" effect around them
+
+some non-interactables on the walls and floors to add some pop
+
+colors are more muted, makes player enemies and interactables stand out
+
+UI and mini-map use bright contrasting colors to be readable
+
+view is NOT directly top down, the wall tiles at the top are very different from the ones at the bottom of the room
+	Top wall is roughly 130 pixels tall ~1/3rd length of a slot?
+		If we assume a 45 degree viewing angle what portion of the wall is viewable?
+	top you see the entire wall, bottom is just the "top" of the wall
+	as for the sides/walls in middle, treat these as a top down view, our view point is locked in on the x axis, rotated slightly about the z
+
+right angles for vast majority of scenery
+
+dont be afraid to put impassible terrain in the middle of a room
+
+rooms in general seem to be "medium" sized. Maybe translates to around 4 x 5? slots
+	For our algo size of room currently increases with level and difficulty
+		Pros: Game gets harder w/o artificial bullet sponge, more map for player to explore, higher chance of random shrine/loot etc
+		Cons: Game can become tedious, "punishes" good players(?), slows down the desired fast pace gameplay loop
+
+	Perhaps strike a balance. Rooms will very slowly increase in size, but the maps will become larger quickly? Each individual room is fast paced
+	but the game still increases difficulty by throwing more enemies and a harder maze at you. Still offers increase chance of loot and random spawns
+	because more total rooms generated.
+
+"out of bounds" area is just flat color, no distractions
