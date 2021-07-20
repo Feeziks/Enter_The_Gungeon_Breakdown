@@ -12,30 +12,26 @@ public class Room
     //A percentage of walkable terrain vs trap terrain could be used?
 
     //Constructors
-    public Room()
-    {
-        this.cost = 1;
-        this.name = "Unamed Room";
+  public Room(int c, string n, Transform p)
+  {
+    cost = c;
+    name = n;
+    parent = p;
+    parent = p;
 
-        this.Container = new GameObject(this.name);
-    }
+    container = new GameObject(this.name);
+    container.transform.SetParent(parent);
+  }
 
-    public Room(int c, string n)
-    {
-        this.cost = c;
-        this.name = n;
+  //public members
+  public int cost { get; }
+  public string name {get; }
+  public GameObject container {get; }
 
-        this.Container = new GameObject(this.name);
-    }
-
-    //public members
-    public int cost { get; }
-    public string name {get; }
-    public GameObject Container {get; }
-
-    //private members
+  //private members
+  private Transform parent; // The parent of any room should be a map object
     
-    //public methods
+  //public methods
 
-    //private methods
-}
+  //private methods
+  }

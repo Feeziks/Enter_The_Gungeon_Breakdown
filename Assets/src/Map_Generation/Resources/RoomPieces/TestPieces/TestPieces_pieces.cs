@@ -11,39 +11,39 @@ namespace MapPieces
 		//---------------------------------------------------------------------------
 		//---------- Piece Declerations ---------------------------------------------
 		//---------------------------------------------------------------------------
-		public static Piece TestRoomPiece;
-		public static Piece TestRoomPiece2;
-		public static Piece TestRoomPiece2walls;
-		public static Piece TestRoomPiece2walls_f;
-		public static Piece TestRoomPiece2walls_f_F;
-		public static Piece TestRoomPiece2_F;
-		public static Piece TestRoomPiece3Walls;
-		public static Piece TestRoomPiece3Walls_f;
-		public static Piece TestRoomPiece3Walls_f_F;
-		public static Piece TestRoomPieceCorner;
-		public static Piece TestRoomPieceCorner_f;
-		public static Piece TestRoomPieceCorner_ff;
-		public static Piece TestRoomPieceCorner_fff;
-		public static Piece TestRoomPieceCorner_fff_F;
-		public static Piece TestRoomPieceCorner_ff_F;
-		public static Piece TestRoomPieceCorner_f_F;
-		public static Piece TestRoomPieceDoor;
-		public static Piece TestRoomPieceDoor_F;
-		public static Piece TestRoomPiecePit;
-		public static Piece TestRoomPiecePit_F;
-		public static Piece TestRoomPieceWall;
-		public static Piece TestRoomPieceWall_f;
-		public static Piece TestRoomPieceWall_ff;
-		public static Piece TestRoomPieceWall_fff;
-		public static Piece TestRoomPieceWall_fff_F;
-		public static Piece TestRoomPieceWall_ff_F;
-		public static Piece TestRoomPieceWall_f_F;
-		public static Piece TestRoomPiece_F;
-		public static Piece Test_Inactive_Piece;
-		public static Piece Test_Inactive_Piece_F;
+		public static Piece TestRoomPiece = new Piece("TestRoomPiece", "RoomPieces/TestPieces/TestRoomPiece_Prefab");
+		public static Piece TestRoomPiece2 = new Piece("TestRoomPiece2", "RoomPieces/TestPieces/TestRoomPiece2_Prefab");
+		public static Piece TestRoomPiece2walls = new Piece("TestRoomPiece2walls", "RoomPieces/TestPieces/TestRoomPiece2walls_Prefab");
+		public static Piece TestRoomPiece2walls_f = new Piece("TestRoomPiece2walls_f", "RoomPieces/TestPieces/TestRoomPiece2walls_f_Prefab");
+		public static Piece TestRoomPiece2walls_f_F = new Piece("TestRoomPiece2walls_f_F", "RoomPieces/TestPieces/TestRoomPiece2walls_f_F_Prefab");
+		public static Piece TestRoomPiece2_F = new Piece("TestRoomPiece2_F", "RoomPieces/TestPieces/TestRoomPiece2_F_Prefab");
+		public static Piece TestRoomPiece3Walls = new Piece("TestRoomPiece3Walls", "RoomPieces/TestPieces/TestRoomPiece3Walls_Prefab");
+		public static Piece TestRoomPiece3Walls_f = new Piece("TestRoomPiece3Walls_f", "RoomPieces/TestPieces/TestRoomPiece3Walls_f_Prefab");
+		public static Piece TestRoomPiece3Walls_f_F = new Piece("TestRoomPiece3Walls_f_F", "RoomPieces/TestPieces/TestRoomPiece3Walls_f_F_Prefab");
+		public static Piece TestRoomPieceCorner = new Piece("TestRoomPieceCorner", "RoomPieces/TestPieces/TestRoomPieceCorner_Prefab");
+		public static Piece TestRoomPieceCorner_f = new Piece("TestRoomPieceCorner_f", "RoomPieces/TestPieces/TestRoomPieceCorner_f_Prefab");
+		public static Piece TestRoomPieceCorner_ff = new Piece("TestRoomPieceCorner_ff", "RoomPieces/TestPieces/TestRoomPieceCorner_ff_Prefab");
+		public static Piece TestRoomPieceCorner_fff = new Piece("TestRoomPieceCorner_fff", "RoomPieces/TestPieces/TestRoomPieceCorner_fff_Prefab");
+		public static Piece TestRoomPieceCorner_fff_F = new Piece("TestRoomPieceCorner_fff_F", "RoomPieces/TestPieces/TestRoomPieceCorner_fff_F_Prefab");
+		public static Piece TestRoomPieceCorner_ff_F = new Piece("TestRoomPieceCorner_ff_F", "RoomPieces/TestPieces/TestRoomPieceCorner_ff_F_Prefab");
+		public static Piece TestRoomPieceCorner_f_F = new Piece("TestRoomPieceCorner_f_F", "RoomPieces/TestPieces/TestRoomPieceCorner_f_F_Prefab");
+		public static Piece TestRoomPieceDoor = new Piece("TestRoomPieceDoor", "RoomPieces/TestPieces/TestRoomPieceDoor_Prefab");
+		public static Piece TestRoomPieceDoor_F = new Piece("TestRoomPieceDoor_F", "RoomPieces/TestPieces/TestRoomPieceDoor_F_Prefab");
+		public static Piece TestRoomPiecePit = new Piece("TestRoomPiecePit", "RoomPieces/TestPieces/TestRoomPiecePit_Prefab");
+		public static Piece TestRoomPiecePit_F = new Piece("TestRoomPiecePit_F", "RoomPieces/TestPieces/TestRoomPiecePit_F_Prefab");
+		public static Piece TestRoomPieceWall = new Piece("TestRoomPieceWall", "RoomPieces/TestPieces/TestRoomPieceWall_Prefab");
+		public static Piece TestRoomPieceWall_f = new Piece("TestRoomPieceWall_f", "RoomPieces/TestPieces/TestRoomPieceWall_f_Prefab");
+		public static Piece TestRoomPieceWall_ff = new Piece("TestRoomPieceWall_ff", "RoomPieces/TestPieces/TestRoomPieceWall_ff_Prefab");
+		public static Piece TestRoomPieceWall_fff = new Piece("TestRoomPieceWall_fff", "RoomPieces/TestPieces/TestRoomPieceWall_fff_Prefab");
+		public static Piece TestRoomPieceWall_fff_F = new Piece("TestRoomPieceWall_fff_F", "RoomPieces/TestPieces/TestRoomPieceWall_fff_F_Prefab");
+		public static Piece TestRoomPieceWall_ff_F = new Piece("TestRoomPieceWall_ff_F", "RoomPieces/TestPieces/TestRoomPieceWall_ff_F_Prefab");
+		public static Piece TestRoomPieceWall_f_F = new Piece("TestRoomPieceWall_f_F", "RoomPieces/TestPieces/TestRoomPieceWall_f_F_Prefab");
+		public static Piece TestRoomPiece_F = new Piece("TestRoomPiece_F", "RoomPieces/TestPieces/TestRoomPiece_F_Prefab");
+		public static Piece Test_Inactive_Piece = new Piece("Test_Inactive_Piece", "RoomPieces/TestPieces/Test_Inactive_Piece_Prefab");
+		public static Piece Test_Inactive_Piece_F = new Piece("Test_Inactive_Piece_F", "RoomPieces/TestPieces/Test_Inactive_Piece_F_Prefab");
 		static TestPieces()
 		{
-			TestRoomPiece = new Piece("TestRoomPiece", "../Resources/RoomPieces//TestPieces/TestRoomPiece_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPieceWall_fff_F}},
 				{"E", new List<Piece>(){}},
@@ -52,7 +52,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPieceWall_fff}},
 				{"W", new List<Piece>(){}},
 				{"NW", new List<Piece>(){TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPiece2 = new Piece("TestRoomPiece2", "../Resources/RoomPieces//TestPieces/TestRoomPiece2_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece2.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPieceWall_fff}},
@@ -61,7 +61,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPieceWall_fff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPiece2walls = new Piece("TestRoomPiece2walls", "../Resources/RoomPieces//TestPieces/TestRoomPiece2walls_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece2walls.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -70,7 +70,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiece2walls_f = new Piece("TestRoomPiece2walls_f", "../Resources/RoomPieces//TestPieces/TestRoomPiece2walls_f_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece2walls_f.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -79,7 +79,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPiece2walls_f_F = new Piece("TestRoomPiece2walls_f_F", "../Resources/RoomPieces//TestPieces/TestRoomPiece2walls_f_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece2walls_f_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -88,7 +88,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiece2_F = new Piece("TestRoomPiece2_F", "../Resources/RoomPieces//TestPieces/TestRoomPiece2_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece2_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPieceWall_fff}},
@@ -97,7 +97,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPieceWall_fff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPiece3Walls = new Piece("TestRoomPiece3Walls", "../Resources/RoomPieces//TestPieces/TestRoomPiece3Walls_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece3Walls.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F}},
@@ -106,7 +106,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiece3Walls_f = new Piece("TestRoomPiece3Walls_f", "../Resources/RoomPieces//TestPieces/TestRoomPiece3Walls_f_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece3Walls_f.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -115,7 +115,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiece3Walls_f_F = new Piece("TestRoomPiece3Walls_f_F", "../Resources/RoomPieces//TestPieces/TestRoomPiece3Walls_f_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece3Walls_f_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls}},
@@ -124,7 +124,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceCorner = new Piece("TestRoomPieceCorner", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -133,7 +133,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceCorner_f = new Piece("TestRoomPieceCorner_f", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_f_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_f.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -142,7 +142,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceWall_fff}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceCorner_ff = new Piece("TestRoomPieceCorner_ff", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_ff_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_ff.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -151,7 +151,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPieceCorner_fff = new Piece("TestRoomPieceCorner_fff", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_fff_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_fff.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceWall_fff_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner}},
@@ -160,7 +160,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceCorner_fff_F = new Piece("TestRoomPieceCorner_fff_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_fff_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_fff_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -169,7 +169,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPieceCorner_ff_F = new Piece("TestRoomPieceCorner_ff_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_ff_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_ff_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceWall_fff_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff}},
@@ -178,7 +178,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceCorner_f_F = new Piece("TestRoomPieceCorner_f_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceCorner_f_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceCorner_f_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -187,7 +187,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceDoor = new Piece("TestRoomPieceDoor", "../Resources/RoomPieces//TestPieces/TestRoomPieceDoor_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceDoor.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F}},
@@ -196,7 +196,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceWall_fff}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceDoor_F = new Piece("TestRoomPieceDoor_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceDoor_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceDoor_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceWall_fff}},
@@ -205,7 +205,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiecePit = new Piece("TestRoomPiecePit", "../Resources/RoomPieces//TestPieces/TestRoomPiecePit_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiecePit.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceWall_fff_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F}},
@@ -214,7 +214,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall_fff}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPiecePit_F = new Piece("TestRoomPiecePit_F", "../Resources/RoomPieces//TestPieces/TestRoomPiecePit_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiecePit_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPieceWall_fff}},
@@ -223,7 +223,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPieceWall_fff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPieceWall = new Piece("TestRoomPieceWall", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F}},
@@ -232,7 +232,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_fff}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceWall_f = new Piece("TestRoomPieceWall_f", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_f_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_f.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_fff}},
@@ -241,7 +241,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPieceWall_ff = new Piece("TestRoomPieceWall_ff", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_ff_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_ff.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_fff_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f}},
@@ -250,7 +250,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPieceWall_fff = new Piece("TestRoomPieceWall_fff", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_fff_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_fff.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -259,7 +259,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, TestRoomPiece_F}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F}},
 				{"NW", new List<Piece>(){}}};
-			TestRoomPieceWall_fff_F = new Piece("TestRoomPieceWall_fff_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_fff_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_fff_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPieceWall_fff}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_ff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -268,7 +268,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f}},
 				{"W", new List<Piece>(){TestRoomPieceWall_ff_F, TestRoomPiece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPiece_F}}};
-			TestRoomPieceWall_ff_F = new Piece("TestRoomPieceWall_ff_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_ff_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_ff_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPiece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}},
@@ -277,7 +277,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPiece_F}}};
-			TestRoomPieceWall_f_F = new Piece("TestRoomPieceWall_f_F", "../Resources/RoomPieces//TestPieces/TestRoomPieceWall_f_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPieceWall_f_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, Test_Inactive_Piece, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F}},
@@ -286,7 +286,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, Test_Inactive_Piece, Test_Inactive_Piece_F}}};
-			TestRoomPiece_F = new Piece("TestRoomPiece_F", "../Resources/RoomPieces//TestPieces/TestRoomPiece_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			TestRoomPiece_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F}},
 				{"NE", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPieceWall_f_F}},
 				{"E", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_f, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F}},
@@ -295,7 +295,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F, TestRoomPieceWall_f_F}},
 				{"W", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2_F, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F}},
 				{"NW", new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall_ff, TestRoomPieceWall_ff_F}}};
-			Test_Inactive_Piece = new Piece("Test_Inactive_Piece", "../Resources/RoomPieces//TestPieces/Test_Inactive_Piece_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			Test_Inactive_Piece.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece_F}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece_F}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece_F}},
@@ -304,7 +304,7 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece_F}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece_F}},
 				{"NW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece_F}}};
-			Test_Inactive_Piece_F = new Piece("Test_Inactive_Piece_F", "../Resources/RoomPieces//TestPieces/Test_Inactive_Piece_F_Prefab.prefab", new Dictionary<string, List<Piece>>(){ 
+			Test_Inactive_Piece_F.validNeighbors = new Dictionary<string, List<Piece>>(){
 				{"N", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff, TestRoomPieceWall_f_F, Test_Inactive_Piece}},
 				{"NE", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_fff, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_fff, Test_Inactive_Piece}},
 				{"E", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_ff_F, Test_Inactive_Piece}},
@@ -313,7 +313,14 @@ namespace MapPieces
 				{"SW", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls_f, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceWall_fff_F, Test_Inactive_Piece}},
 				{"W", new List<Piece>(){TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_fff_F, TestRoomPieceWall_f_F, Test_Inactive_Piece}},
 				{"NW", new List<Piece>(){TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_f_F, Test_Inactive_Piece}}};
+			allTestPiecesPieces = new List<Piece>(){TestRoomPiece, TestRoomPiece2, TestRoomPiece2walls, TestRoomPiece2walls_f, TestRoomPiece2walls_f_F, TestRoomPiece2_F, TestRoomPiece3Walls, TestRoomPiece3Walls_f, TestRoomPiece3Walls_f_F, TestRoomPieceCorner, TestRoomPieceCorner_f, TestRoomPieceCorner_ff, TestRoomPieceCorner_fff, TestRoomPieceCorner_fff_F, TestRoomPieceCorner_ff_F, TestRoomPieceCorner_f_F, TestRoomPieceDoor, TestRoomPieceDoor_F, TestRoomPiecePit, TestRoomPiecePit_F, TestRoomPieceWall, TestRoomPieceWall_f, TestRoomPieceWall_ff, TestRoomPieceWall_fff, TestRoomPieceWall_fff_F, TestRoomPieceWall_ff_F, TestRoomPieceWall_f_F, TestRoomPiece_F, Test_Inactive_Piece, Test_Inactive_Piece_F};
+		}
+		public static void Load()
+		{
+			foreach(Piece p in allTestPiecesPieces)
+			{
+				p.LoadPrefab();
+			}
 		}
 	}
-
 }

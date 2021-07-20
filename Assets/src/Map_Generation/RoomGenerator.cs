@@ -38,9 +38,9 @@ public class RoomGenerator
     #endregion
 
     //public methods
-    public Room GenerateRoom(int level, int difficulty, List<Piece> pieceSet)
+    public Room GenerateRoom(int level, int difficulty, List<Piece> pieceSet, Transform mapTransform)
     {
-        Room toReturn = new Room(1, "test name");
+        Room toReturn = new Room(1, "test name", mapTransform);
 
         //Generate a new room based on the given level and difficulty
         // First create the outline of the room - this will be some number of slots in some shape
@@ -194,7 +194,7 @@ public class RoomGenerator
             {
                 if(roomSlots[x,y].IsCollapsed())
                 {
-                    roomSlots[x,y].go.transform.parent = r.Container.transform;
+                    roomSlots[x,y].go.transform.parent = r.container.transform;
                 }
             }
         }

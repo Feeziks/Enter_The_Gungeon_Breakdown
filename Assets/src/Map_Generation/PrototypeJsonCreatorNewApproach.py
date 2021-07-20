@@ -3,7 +3,7 @@ import os
 import json
 
 grandParentPath = "..\\Resources\\RoomPieces\\"
-grandParentPathForwardSlash = "RoomPieces"
+grandParentPathForwardSlash = "../Resources/RoomPieces/"
 
 def getAllFilesOfType(dir, fileType):
   ret = []
@@ -89,14 +89,15 @@ def buildClassFile(dict, level, fileText):
   fileText += "\t\t//---------------------------------------------------------------------------\n"
   
   for piece in dict[level].keys():
-    fileText += "\t\tpublic static Piece " +  piece + " = new Piece(\"" + piece + "\", \"" + grandParentPathForwardSlash + "/" + level + "/" + piece + "_Prefab\");\n"
+    fileText += "\t\tpublic static Piece " +  piece + ";\n"
 
 
   fileText += "\t\tstatic " + level + "()\n"
   fileText += "\t\t{\n"
 
   for piece in dict[level].keys():
-    fileText += "\t\t\t" + piece + ".validNeighbors = new Dictionary<string, List<Piece>>(){"
+    fileText += "\t\t\t" + piece + " = new Piece(\"" + piece + "\", \"" + grandParentPathForwardSlash + "/" + level + "/" + piece + "_Prefab.prefab\", ";
+    fileText += "new Dictionary<string, List<Piece>>(){ "
     for direction in dict[level][piece].keys():
       fileText += "\n\t\t\t\t{\"" + direction + "\", new List<Piece>(){"
       for i, validNeighbor in enumerate(dict[level][piece][direction]):
@@ -108,7 +109,7 @@ def buildClassFile(dict, level, fileText):
       if direction != "NW":
         fileText += ","
 
-    fileText += "};\n"
+    fileText += "});\n"
 
 
   fileText += "\t\t\tall" + level + "Pieces = new List<Piece>(){"
@@ -119,6 +120,9 @@ def buildClassFile(dict, level, fileText):
 
   fileText += "};\n"
   fileText += "\t\t}\n"
+
+
+  fileText += "\t}\n\n";
 
   return fileText
 
@@ -132,15 +136,8 @@ def buildLevelPrototypeFiles(dict):
       fileText += "namespace MapPieces\n"
       fileText += "{\n"
       fileText = buildClassFile(dict, level, fileText)
-      fileText += "\t\tpublic static void Load()\n"
-      fileText += "\t\t{\n"
-      fileText += "\t\t\tforeach(Piece p in all" + level + "Pieces)\n"
-      fileText += "\t\t\t{\n"
-      fileText += "\t\t\t\tp.LoadPrefab();\n"
-      fileText += "\t\t\t}\n"
-      fileText += "\t\t}\n"
-      fileText += "\t}\n"
       fileText += "}"
+
       file.write(fileText)
 
 if __name__ == "__main__":

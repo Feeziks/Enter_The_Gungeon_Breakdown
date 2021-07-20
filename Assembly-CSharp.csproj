@@ -56,9 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\src\Map_Generation\Resources\RoomPieces\Kamen\test_stuff.cs" />
     <Compile Include="Assets\src\Map_Generation\Slot.cs" />
-    <Compile Include="Assets\src\Map_Generation\Resources\RoomPieces\TestPieces\test_stuff.cs" />
     <Compile Include="Assets\src\Map_Generation\Map.cs" />
     <Compile Include="Assets\src\ChestLootTest.cs" />
     <Compile Include="Assets\src\RandomnessVis.cs" />
@@ -67,18 +65,16 @@
     <Compile Include="Assets\src\Map_Generation\RoomPiece_SO.cs" />
     <Compile Include="Assets\src\Map_Generation\MapManager.cs" />
     <Compile Include="Assets\src\Map_Generation\Room.cs" />
-    <Compile Include="Assets\src\Map_Generation\ForestPieces.cs" />
     <Compile Include="Assets\src\Window_Graph.cs" />
     <Compile Include="Assets\src\ChestRarityTest.cs" />
-    <Compile Include="Assets\src\Map_Generation\Resources\RoomPieces\ForestPieces\test_stuff.cs" />
-    <Compile Include="Assets\src\Map_Generation\TestPieces.cs" />
     <Compile Include="Assets\src\Map_Generation\Piece.cs" />
     <Compile Include="Assets\src\Map_Generation\RoomGenerator.cs" />
     <Compile Include="Assets\src\Map_Generation\MapGeneration.cs" />
     <Compile Include="Assets\src\Randomness.cs" />
-    <Compile Include="Assets\src\Map_Generation\Kamen.cs" />
     <Compile Include="Assets\src\Map_Generation\MapGenerator.cs" />
     <Compile Include="Assets\src\UI_Conversions.cs" />
+    <Compile Include="Assets\src\Map_Generation\Resources\RoomPieces\TestPieces\TestPieces_pieces.cs" />
+    <Compile Include="Assets\src\Map_Generation\Resources\RoomPieces\Kamen\Kamen_pieces.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\src\Map_Generation\Python\Flip_Images.py" />

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8023454819678439974}
   - component: {fileID: 1589222773967168270}
   m_Layer: 0
-  m_Name: Kamen_Shape_22_F_Prefab
+  m_Name: Kamen_Shape_22_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad40ae49bc56c4d4f853ea933fa7e557, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96118ef2e98ada142873e08b4f6cf32c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

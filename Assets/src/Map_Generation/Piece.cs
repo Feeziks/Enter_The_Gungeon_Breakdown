@@ -17,60 +17,68 @@ public class Piece
   //Prefab
   public GameObject prefab;
 
-    //prefab location
-    public string prefabPath;
+  //prefab location
+  public string prefabPath;
 
   //Valid Neighbor list
   public Dictionary<string, List<Piece>> validNeighbors;
 
-    //Private Members
+  //Private Members
 
   //Constructors
   public Piece()
+  {
+
+  }
+
+  public Piece(string n, string pp)
+  {
+    name = n;
+    prefabPath = pp;
+    validNeighbors = null;
+    prefab = null;
+  }
+
+  public Piece(string n, GameObject p, Dictionary<string, List<Piece>> v)
+  {
+    name = n;
+    prefab = p;
+    validNeighbors = v;
+  }
+
+  public Piece(string n, string pp, Dictionary<string, List<Piece>> v)
+  {
+    name = n;
+    prefabPath = pp;
+    validNeighbors = v;
+  }
+
+  public Piece(Piece copy)
+  {
+    name = copy.name;
+    prefab = copy.prefab;
+    validNeighbors = copy.validNeighbors;
+  }
+
+  //Public methods
+  public bool LoadPrefab()
+  {
+    if (String.IsNullOrEmpty(prefabPath))
     {
-
+      Debug.LogError("Null or empty prefab path when attempting to load prefab in piece: " + name);
+      return false;
     }
-    
-    public Piece(string n, GameObject p, Dictionary<string, List<Piece>> v)
+
+    prefab = Resources.Load(prefabPath, typeof(GameObject)) as GameObject;
+    if (prefab == null)
     {
-        this.name = n;
-        this.prefab = p;
-        this.validNeighbors = v;
+      Debug.LogError("Unable to load prefab from path " + prefabPath + " for piece " + name);
+      return false;
     }
 
-    public Piece(string n, string pp, Dictionary<string, List<Piece>> v)
-    {
-        this.name = n;
-        this.prefabPath = pp;
-        this.validNeighbors = v;
-    }
+    return true;
+  }
 
-    public Piece(Piece copy)
-    {
-        this.name = copy.name;
-        this.prefab = copy.prefab;
-        this.validNeighbors = copy.validNeighbors;
-    }
-
-    //Public methods
-    public bool LoadPrefab()
-    {
-        if(String.IsNullOrEmpty(prefabPath))
-        {
-            Debug.LogError("Null or empty prefab path when attempting to load prefab in piece: " + this.name);
-            return false;
-        }
-
-        this.prefab = Resources.Load(prefabPath, typeof(GameObject)) as GameObject;
-        if(this.prefab == null)
-        {
-            Debug.LogError("Unable to load prefab from path " + prefabPath + " for piece " + this.name);
-            return false;
-        }
-
-        return true;
-    }
-    
-    //Private methods
+  //Private methods
 
 }

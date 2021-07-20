@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class Map
 {
-    //This class holds the data that describes the map of any given level
-    //This class does not perform any actions relating to generating/deleting/checking etc. maps it is just a data holder
+  //This class holds the data that describes the map of any given level
+  //This class does not perform any actions relating to generating/deleting/checking etc. maps it is just a data holder
 
-    //Messed up the git history by accident so making a change ehre so I can make a new commit
+  //Constructor
+  public Map(string n)
+  {
+    name = n;
+    container = new GameObject(name);
+  }
 
-    //Constructor
-    public Map()
-    {
+  //public members
+  public string name { get; }
 
-    }
+  //private members
+  private List<Room> rooms = new List<Room>();
+  private GameObject container;
 
-    //public members
+  //public methods
+  public void AddRoom(Room newRoom)
+  {
+    rooms.Add(newRoom);
+  }
 
-    //private members
-    private List<Room> rooms = new List<Room>();
+  public void ClearMap()
+  {
+    rooms.Clear();
+  }
 
-    //public methods
-    public void AddRoom(Room newRoom)
-    {
-        rooms.Add(newRoom);
-    }
+  public Transform GetTransform()
+  {
+    return container.transform;
+  }
 
-    public void ClearMap()
-    {
-        rooms.Clear();
-    }
-
-    //private methods
+  //private methods
 }
