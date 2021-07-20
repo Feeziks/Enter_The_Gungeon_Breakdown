@@ -29,14 +29,14 @@ public static class WaveFunctionCollapse
   private static int numDirections = 8; //8 Total directions each slot needs to check for neighbors -> see values in neighborIdxToDirectionString for directions
   private static Dictionary<Vector2Int, string> neighborIdxToDirectionString = new Dictionary<Vector2Int, string>
   {
-    {new Vector2Int(0, -1), "N"  },
-    {new Vector2Int(1, -1), "NE" },
+    {new Vector2Int(0,  1), "N"  },
+    {new Vector2Int(1,  1), "NE" },
     {new Vector2Int(1,  0), "E"  },
-    {new Vector2Int(1,  1), "SE" },
-    {new Vector2Int(0,  1), "S"  },
-    {new Vector2Int(-1, 1), "SW" },
+    {new Vector2Int(1, -1), "SE" },
+    {new Vector2Int(0, -1), "S"  },
+    {new Vector2Int(-1,-1), "SW" },
     {new Vector2Int(-1, 0), "W"  },
-    {new Vector2Int(-1,-1), "NW" }
+    {new Vector2Int(-1, 1), "NW" }
   };
   private static Dictionary<string, string> inverseDirections = new Dictionary<string, string>
   {
@@ -158,9 +158,7 @@ public static class WaveFunctionCollapse
     //Get all valid neighbors for this slot, return them in a way that you can access with the directions enum
     Vector2Int[] neighbors = new Vector2Int[numDirections];
 
-    Vector2Int[] neighborOffsets = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(1, -1),
-                                       new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1),
-                                       new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int(-1, -1) };
+    Vector2Int[] neighborOffsets = neighborIdxToDirectionString.Keys.ToArray();
 
     //Get the valid neighbors for the pieces next to our starting slot
     for (int i = 0; i < neighborOffsets.Length; i++)
@@ -381,7 +379,8 @@ public static class WaveFunctionCollapse
       }
     }
 
-    return true;
+    Propagate(edgeSlots[0]);
+    return !failure_status;
   }
 
   private static List<Vector2Int> GetEdgeSlots()
@@ -411,9 +410,7 @@ public static class WaveFunctionCollapse
 
   private static bool CheckForInactiveNeighbors(Vector2Int coords)
   {
-    Vector2Int[] neighborOffsets = new Vector2Int[] { new Vector2Int(0, -1), new Vector2Int(1, -1),
-                                new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1),
-                                new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int(-1, -1) };
+    Vector2Int[] neighborOffsets = neighborIdxToDirectionString.Keys.ToArray();
 
     //Get the valid neighbors for the pieces next to our starting slot
     for (int i = 0; i < neighborOffsets.Length; i++)

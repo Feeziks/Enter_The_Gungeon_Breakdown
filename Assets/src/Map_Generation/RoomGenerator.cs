@@ -100,7 +100,7 @@ public class RoomGenerator
         numSlots = (int)Mathf.Sqrt(numSlots);
 
         //TODO: Reset this
-        numSlots = 3;
+        numSlots = 2;
         return numSlots;
     }
 

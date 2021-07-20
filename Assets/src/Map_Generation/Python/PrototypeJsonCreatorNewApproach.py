@@ -18,7 +18,8 @@ def seperateFilesByLevel(fileList):
   ret = dict()
 
   #The level name in each file is the string after Roompieces
-  #the input files should be of the form "..\\Resources\\Roompieces\\<Level name is here>\\<individual file name is here>
+  #the input files should be of the form "..\\Resources\\Roompieces\\<Level
+  #name is here>\\<individual file name is here>
   for file in fileList:
     levelName = file.split("\\")[3]
 
@@ -44,7 +45,8 @@ def getPointsOfInterestInPhoto(pixels, width, height):
   return ret
 
 def buildPointsDict(pngDict):
-  #We need to iterate by level and determine for each tile within a level what its valid neighbors are in any given direction
+  #We need to iterate by level and determine for each tile within a level what
+  #its valid neighbors are in any given direction
   points = dict()
   for level in pngFilesByLevel.keys():
     points[level] = dict()
@@ -63,13 +65,15 @@ def buildValidNeighborsDict(pointsDict):
     validNeighbors[level] = dict()
 
     for thisTile in pointsDict[level]:
-      #The valid neighbors we make has to be ordered by the directions so we build those keys here
+      #The valid neighbors we make has to be ordered by the directions so we
+      #build those keys here
       validNeighbors[level][thisTile] = {'N' : [], 'NE' : [], 'E' : [], 'SE' : [], 'S' : [], 'SW' : [], 'W' : [], 'NW' : []}
       thisTilePoints = pointsDict[level][thisTile]
 
       for otherTile in pointsDict[level]:
         if otherTile is not thisTile:
-          #we have to iterate the list in the reverse direction so we check other tile south vs our north etc
+          #we have to iterate the list in the reverse direction so we check
+          #other tile south vs our north etc
           otherTilePoints = pointsDict[level][otherTile]
           otherTilePoints.reverse()
 
@@ -89,7 +93,7 @@ def buildClassFile(dict, level, fileText):
   fileText += "\t\t//---------------------------------------------------------------------------\n"
   
   for piece in dict[level].keys():
-    fileText += "\t\tpublic static Piece " +  piece + " = new Piece(\"" + piece + "\", \"" + grandParentPathForwardSlash + "/" + level + "/" + piece + "_Prefab\");\n"
+    fileText += "\t\tpublic static Piece " + piece + " = new Piece(\"" + piece + "\", \"" + grandParentPathForwardSlash + "/" + level + "/" + piece + "_Prefab\");\n"
 
 
   fileText += "\t\tstatic " + level + "()\n"
@@ -125,10 +129,10 @@ def buildClassFile(dict, level, fileText):
 def buildLevelPrototypeFiles(dict):
   for level in dict.keys():
     with open(grandParentPath + level + "\\" + level + "_pieces.cs", 'w') as file:
-      fileText  = "using System.Collections;\n"
+      fileText = "using System.Collections;\n"
       fileText += "using System.Collections.Generic;\n"
       fileText += "using UnityEngine;\n"
-      fileText += "\n\n";
+      fileText += "\n\n"
       fileText += "namespace MapPieces\n"
       fileText += "{\n"
       fileText = buildClassFile(dict, level, fileText)

@@ -19,7 +19,7 @@ public class Room
     parent = p;
     parent = p;
 
-    container = new GameObject(this.name);
+    container = new GameObject(name);
     container.transform.SetParent(parent);
   }
 
