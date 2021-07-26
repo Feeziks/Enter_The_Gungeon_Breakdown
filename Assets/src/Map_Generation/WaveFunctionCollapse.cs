@@ -11,440 +11,316 @@ public static class WaveFunctionCollapse
 
   //private members
   private static Slot[,] m_slots;
-  private static bool collapsed;
   private static List<Piece> pieceSet;
-  private static int[,] propCounts;
-  private static List<Vector2Int> edgeSlots;
+  private static Transform parentTransform;
 
-  private static int MAX_PROP_COUNT = 3;
-  private static int MAX_ITERATION_COUNT = 100;
-  private static int curr_iteration_count;
+  private static bool collapsed;
+  private static bool failed;
 
-  private static Vector2Int invalidNeighbor = new Vector2Int(-1, -1);
-  private static Vector2Int inactiveNeighbor = new Vector2Int(-2, -2);
+  private static Vector2Int inactiveNeighbor = new Vector2Int(-1, -1);
+  private static Vector2Int outOfBoundsNeighbor = new Vector2Int(-2, -2);
   private static Vector2Int collapsedNeighbor = new Vector2Int(-3, -3);
 
-  private static bool failure_status;
-
-  private static int numDirections = 8; //8 Total directions each slot needs to check for neighbors -> see values in neighborIdxToDirectionString for directions
-  private static Dictionary<Vector2Int, string> neighborIdxToDirectionString = new Dictionary<Vector2Int, string>
+  private static Vector2Int[] neighborOffsets = new Vector2Int[8]
   {
-    {new Vector2Int(0,  1), "N"  },
-    {new Vector2Int(1,  1), "NE" },
-    {new Vector2Int(1,  0), "E"  },
-    {new Vector2Int(1, -1), "SE" },
-    {new Vector2Int(0, -1), "S"  },
-    {new Vector2Int(-1,-1), "SW" },
-    {new Vector2Int(-1, 0), "W"  },
-    {new Vector2Int(-1, 1), "NW" }
+    new Vector2Int( 0,  1),
+    new Vector2Int( 1,  1),
+    new Vector2Int( 1,  0),
+    new Vector2Int( 1, -1),
+    new Vector2Int( 0, -1),
+    new Vector2Int(-1, -1),
+    new Vector2Int(-1,  0),
+    new Vector2Int(-1,  1)
   };
-  private static Dictionary<string, string> inverseDirections = new Dictionary<string, string>
+
+  private static Dictionary<string, Vector2Int> directionToNeighborOffset = new Dictionary<string, Vector2Int>
   {
-    {"N" , "S" },
+    { "N", neighborOffsets[0]},
+    {"NE", neighborOffsets[1]},
+    { "E", neighborOffsets[2]},
+    {"SE", neighborOffsets[3]},
+    { "S", neighborOffsets[4]},
+    {"SW", neighborOffsets[5]},
+    { "W", neighborOffsets[6]},
+    {"NW", neighborOffsets[7]}
+  };
+
+  private static Dictionary<string, string> directionToInverseDirection = new Dictionary<string, string>
+  {
+    { "N",  "S"},
     {"NE", "SW"},
-    {"E" , "W" },
+    { "E",  "W"},
     {"SE", "NW"},
-    {"S" , "N" },
+    { "S",  "N"},
     {"SW", "NE"},
-    {"W" , "E" },
-    {"NW", "SE"},
+    { "W",  "E"},
+    {"NW", "SE"}
   };
 
-  //public methods
-  public static void SetSlots(ref Slot[,] s, List<Piece> ps)
+  public static bool InitSlots(int width, int height, List<Piece> ps, Transform t)
   {
-    m_slots = s;
-    collapsed = false;
+    bool success = true;
     pieceSet = ps;
+    parentTransform = t;
+    m_slots = new Slot[width, height];
 
-    propCounts = new int[m_slots.GetLength(0), m_slots.GetLength(1)];
-    ResetPropCounts();
-
-    curr_iteration_count = 0;
-
-    edgeSlots = new List<Vector2Int>();
-    ResetEdgeSlots();
-
-    //Enforce Active "edge" constraints
-    bool success = EnforceEdgeConstraints();
-    if (!success)
+    for(int x = 0; x < width; x++)
     {
-      Debug.LogError("Error in setting WFC slots! edges of the slots cannot be constrained properly!");
-      failure_status = true;
+      for(int y = 0; y < height; y++)
+      {
+        m_slots[x, y] = new Slot(new Vector2Int(x, y), pieceSet, parentTransform);
+      }
     }
 
-    failure_status = false;
+    DetermineSlotActivity();
+    CacheNeighbors();
+    success &= ConstrainEdgeSlots();
+    return success;
   }
 
-  public static void Iterate()
+  public static void DetermineSlotActivity()
   {
-    if (curr_iteration_count >= MAX_ITERATION_COUNT)
-    {
-      collapsed = true;
-      return;
+    //For now set every single slot as active
+    //In the future look up algo's to determine more "natural" looking map
+    foreach(Slot s in m_slots)
+    { 
+      s.SetActive();
     }
-    curr_iteration_count++;
-    //Get the minimum entropy slot
+  }
+
+  public static bool ConstrainEdgeSlots()
+  {
+    bool success = true;
+    List<Vector2Int> edgeSlots = GetEdgeSlots();
+
+    foreach(Vector2Int edge in edgeSlots)
+    {
+      success &= EnforceInactiveConstraints(edge);
+    }
+
+    if(!success)
+    {
+      Debug.Log("Error in Edge Constraints when applying constraints to edge slots!");
+      return success;
+    }
+
+    //Propagate these constraints to our active neighbors
+    success &= Propagate(edgeSlots);
+    if(!success)
+    {
+      Debug.Log("Error in Edge Constraints when propagating!");
+      return success;
+    }
+
+    return success;
+  }
+
+  public static bool Iterate()
+  {
+    bool success = true;
     Vector2Int minEntropy = GetMinimumEntropy();
-    //Collapse that slot
-    m_slots[minEntropy.x, minEntropy.y].CollapseRandom();
-    //Propagate the collapse through the remaining slots
-    Propagate(minEntropy);
+    if (minEntropy.x < 0 && minEntropy.y < 0)
+    {
+      success = false;
+      Debug.Log("Error in GetMinimumEntropy!");
+      return success;
+    }
+
+    success &= m_slots[minEntropy.x, minEntropy.y].CollapseRandom();
+    success &= Propagate(minEntropy);
+    return success;
   }
 
   public static bool IsCollapsed()
   {
-    return collapsed;
+    return CheckCollapsedStatus();
   }
 
-  public static bool Failed()
+  public static Slot[,] GetSlots()
   {
-    return failure_status;
+    return m_slots;
   }
 
-  //Private methods
-  private static void ResetPropCounts()
+  private static bool EnforceInactiveConstraints(Vector2Int pos)
   {
-    for (int x = 0; x < m_slots.GetLength(0); x++)
+    //Enforce inactive constraints on this slot
+    //Do not propagate these effects here, that will be handled later on
+
+    //Loop over the slots neighbors and if the slot is inactive or out of bounds
+    //Add its constraints on THIS slot
+
+    List<Piece> constraints = new List<Piece>();
+    foreach(var item in m_slots[pos.x, pos.y].neighbors)
     {
-      for (int y = 0; y < m_slots.GetLength(1); y++)
+      if(item.Value == inactiveNeighbor || item.Value == outOfBoundsNeighbor)
       {
-        propCounts[x, y] = 0;
+        string inverseDirection = directionToInverseDirection[item.Key];
+        constraints.AddRange(pieceSet[pieceSet.Count - 1].validNeighbors[inverseDirection]);
       }
     }
-  }
-
-  private static void ResetEdgeSlots()
-  {
-    edgeSlots.Clear();
-  }
-
-  private static Vector2Int GetMinimumEntropy()
-  {
-    int min = int.MaxValue;
-    bool min_set = false;
-    Vector2Int ret = new Vector2Int(-1, -1);
-    for (int i = 0; i < m_slots.GetLength(0); i++)
-    {
-      for (int j = 0; j < m_slots.GetLength(1); j++)
-      {
-        int temp = m_slots[i, j].GetEntropy();
-
-        if (temp <= min && temp != -1)
-        {
-          if (min_set)
-          {
-            if (Randomness.Instance.RandomUniformFloat(0, 1) > 0.5f)
-            {
-              min = temp;
-              ret = new Vector2Int(i, j);
-            }
-          }
-          else
-          {
-            min = temp;
-            ret = new Vector2Int(i, j);
-            min_set = true;
-          }
-        }
-      }
-    }
-
-    return ret;
-  }
-
-  private static Vector2Int[] GetNeighbors(Vector2Int thisSlotCoords)
-  {
-    //Get all valid neighbors for this slot, return them in a way that you can access with the directions enum
-    Vector2Int[] neighbors = new Vector2Int[numDirections];
-
-    Vector2Int[] neighborOffsets = neighborIdxToDirectionString.Keys.ToArray();
-
-    //Get the valid neighbors for the pieces next to our starting slot
-    for (int i = 0; i < neighborOffsets.Length; i++)
-    {
-      int x = neighborOffsets[i].x;
-      int y = neighborOffsets[i].y;
-
-      neighbors[i] = invalidNeighbor;
-
-      if (thisSlotCoords.x + x < 0 || thisSlotCoords.x + x >= m_slots.GetLength(0))
-      {
-        neighbors[i] = inactiveNeighbor;
-        continue;
-      }
-
-      if (thisSlotCoords.y + y < 0 || thisSlotCoords.y + y >= m_slots.GetLength(1))
-      {
-        neighbors[i] = inactiveNeighbor;
-        continue;
-      }
-
-      if (!m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].GetActive())
-      {
-        neighbors[i] = inactiveNeighbor;
-        continue;
-      }
-
-      if (m_slots[thisSlotCoords.x + x, thisSlotCoords.y + y].IsCollapsed())
-      {
-        neighbors[i] = collapsedNeighbor;
-        continue;
-      }
-
-      //Add this valid neighboring slot into our return array
-      neighbors[i] = new Vector2Int(thisSlotCoords.x + x, thisSlotCoords.y + y);
-    }
-
-    return neighbors;
-  }
-
-  private static void Propagate(Vector2Int startingSlot)
-  {
-    Stack myStack = new Stack();
-    myStack.Push(startingSlot);
-
-    string logFilePath = "Logs\\Propagation.txt";
-
-    while (myStack.Count != 0)
-    {
-      Vector2Int thisSlotCoords = (Vector2Int)myStack.Pop();
-
-      propCounts[thisSlotCoords.x, thisSlotCoords.y]++;
-
-      File.AppendAllText(logFilePath, "Propagating from slot at position : " + thisSlotCoords.x + ", " + thisSlotCoords.y + "\n");
-
-      //Get all the neighbors
-      Vector2Int[] neighbors = GetNeighbors(thisSlotCoords);
-
-      bool success = EnforceConstraints(thisSlotCoords, ref neighbors, ref myStack);
-      if (!success)
-      {
-        failure_status = true;
-      }
-    }
-
-    collapsed = CheckCollapsed();
-  }
-
-  private static bool EnforceConstraints(Vector2Int slotCoords, ref Vector2Int[] neighbors, ref Stack stack)
-  {
-    string logFilePath = "Logs\\Propagation.txt";
-
-    bool success = false;
-
-    /*
-    success= EnforceInactiveConstraints(slotCoords, neighbors);
-
-    if(!success)
-    {
-        //Exit early if we have already failed
-        failure_status = true;
-        return success;
-    } 
-    */
-
-    success = EnforceActiveConstraints(slotCoords, neighbors, ref stack);
-
-    if (!success)
-    {
-      //Exit early if we have already failed
-      failure_status = true;
-      return success;
-    }
-
-    //We passed both constraints successfully
+    bool success = m_slots[pos.x, pos.y].Constrain(constraints);
     return success;
   }
 
-  private static bool EnforceInactiveConstraints(Vector2Int slotCoords, Vector2Int[] neighbors)
+  private static bool EnforceActiveConstraints(Vector2Int pos, ref Stack<Vector2Int> myStack, List<Vector2Int> alreadyTouched)
   {
-    //Ensure that we arent over constraining a slot
-    if (m_slots[slotCoords.x, slotCoords.y].IsCollapsed())
+    bool success = true;
+    foreach(var item in m_slots[pos.x, pos.y].neighbors)
     {
-      return true;
-    }
-
-    //Enforce constraints on the passed slot based on its inactive neighbors
-    string logFilePath = "Logs\\Propagation.txt";
-    //Check if any of our neighbors are inactive
-    for (int i = 0; i < numDirections; i++)
-    {
-      if (neighbors[i] != inactiveNeighbor)
+      if((item.Value.x < 0 && item.Value.y < 0) || m_slots[item.Value.x, item.Value.y].IsCollapsed())
       {
-        continue;
+        continue; //Skip any slots that are inactive, out of bounds, or collapsed. We already constrained those slots
       }
 
-      List<Piece> inactiveConstraints = new List<Piece>();
-      //If they are inactive we need to constrain our current slot to ensure that we only use a piece 
-      //that can border an inactive one
-      //Ensure that the inactive piece for each piece set is emplaced at the END of the list of all those pieces
-      Piece inactivePiece = pieceSet[pieceSet.Count - 1];
-      //Vector2Int offset = new Vector2Int(neighbors[i].x - slotCoords.x, neighbors[i].y - slotCoords.y);
-      //string direction = neighborIdxToDirectionString[offset];
-      string inverseDirection = inverseDirections[inverseDirections.Keys.ToList()[i]];
-      //Constrain our piece based on the inactive pieces valid neighbors in the inverse direction (Pointing towards us)
-      bool success = m_slots[slotCoords.x, slotCoords.y].Constrain(inactivePiece.validNeighbors[inverseDirection]);
-      if (!success)
+      List<Piece> constraints = new List<Piece>();
+      foreach(Piece p in m_slots[pos.x, pos.y].validPieces)
       {
-        Debug.LogError("Overconstrained the slot at position: " + slotCoords);
-        failure_status = true;
-        return false;
+        constraints.AddRange(p.validNeighbors[item.Key]);
       }
 
+      success &= m_slots[item.Value.x, item.Value.y].Constrain(constraints);
+
+      if(!alreadyTouched.Contains(item.Value))
+      {
+        myStack.Push(item.Value);
+      }
     }
 
-    //Return pass
-    return true;
+    if(!success)
+    {
+      Debug.Log("Error in EnforceActiveConstraints!");
+    }
+
+    return success;
   }
 
-  private static bool EnforceActiveConstraints(Vector2Int slotCoords, Vector2Int[] neighbors, ref Stack stack)
+  private static bool Propagate(Vector2Int slots)
   {
-    //Loop over the passed neighbors
-    //One potential optimization is to pass a list of only valid neighbors so we no longer need to check, but thats for the future
-
-    for (int neighbor = 0; neighbor < neighbors.Length; neighbor++)
-    {
-      //Check if the neighbor is valid
-      if (neighbors[neighbor].x < 0 || neighbors[neighbor].y < 0)
-        continue; //Skip
-
-      //Get the direction of this neighbor
-      Vector2Int offset = new Vector2Int(neighbors[neighbor].x - slotCoords.x, neighbors[neighbor].y - slotCoords.y);
-      string direction = neighborIdxToDirectionString[offset];
-      List<Piece> validNeighborsThisDirection = new List<Piece>();
-
-      //Loop through the potentially valid pieces in this slot and find their valid neighbors in this direction.
-      //Append them to the list if they are not already there
-      //We can then constrain the neighbor in this direction to that list of valid neighbors
-      for (int validPiece = 0; validPiece < m_slots[slotCoords.x, slotCoords.y].validPieces.Count; validPiece++)
-      {
-        Piece thisPiece = m_slots[slotCoords.x, slotCoords.y].validPieces[validPiece];
-        //Get valid neighbors based on the direction string from earlier
-        List<Piece> thisPieceValidNeighborsThisDirection = thisPiece.validNeighbors[direction];
-        foreach (Piece p in thisPieceValidNeighborsThisDirection)
-        {
-          if (!validNeighborsThisDirection.Contains(p))
-          {
-            //Build the constraining list
-            validNeighborsThisDirection.Add(p);
-          }
-        }
-      }
-
-      //We now have the list to constrain the neighbor in this direction to, enforce it on the slot
-      if (m_slots[neighbors[neighbor].x, neighbors[neighbor].y].IsCollapsed())
-      {
-        if (!validNeighborsThisDirection.Contains(m_slots[neighbors[neighbor].x, neighbors[neighbor].y].piece))
-        {
-          Debug.LogError("Overconstrained an already collapsed slot at position: " + neighbors[neighbor]);
-          failure_status = true;
-          return false;
-        }
-      }
-      bool success = m_slots[neighbors[neighbor].x, neighbors[neighbor].y].Constrain(validNeighborsThisDirection);
-      if (!success)
-      {
-        Debug.LogError("Overconstrained the slot at position: " + neighbors[neighbor].x + "," + neighbors[neighbor].y);
-        failure_status = true;
-        return false;
-      }
-
-      //Add that slot onto the stack
-      if (!stack.Contains(neighbors[neighbor]) && propCounts[neighbors[neighbor].x, neighbors[neighbor].y] < MAX_PROP_COUNT)
-      {
-        stack.Push(neighbors[neighbor]);
-      }
-    }
-
-    return true;
+    List<Vector2Int> tempList = new List<Vector2Int>{ slots };
+    return Propagate(tempList);
   }
 
-  private static bool EnforceEdgeConstraints()
+  private static bool Propagate(List<Vector2Int> slots)
   {
-    //Get list of active edge slots
-
-    edgeSlots = GetEdgeSlots();
-
-    //Constrain all the active edge slots
-    for (int i = 0; i < edgeSlots.Count; i++)
+    bool success = true;
+    Stack<Vector2Int> myStack = new Stack<Vector2Int>();
+    List<Vector2Int> alreadyTouched = new List<Vector2Int>();
+    foreach(Vector2Int s in slots)
     {
-      Vector2Int[] neighbors = GetNeighbors(edgeSlots[i]);
+      myStack.Push(s);
+    }
 
-      bool success = EnforceInactiveConstraints(edgeSlots[i], neighbors);
-      if (!success)
+    while(myStack.Count != 0)
+    {
+      Vector2Int slotPos = myStack.Pop();
+      success &= EnforceActiveConstraints(slotPos, ref myStack, alreadyTouched);
+
+      if(!alreadyTouched.Contains(slotPos))
       {
-        failure_status = true;
-        return false;
+        alreadyTouched.Add(slotPos);
       }
     }
 
-    Propagate(edgeSlots[0]);
-    return !failure_status;
+    return success;
   }
 
   private static List<Vector2Int> GetEdgeSlots()
   {
-    List<Vector2Int> activeEdgeSlots = new List<Vector2Int>();
-    for (int i = 0; i < m_slots.GetLength(0); i++)
+    List<Vector2Int> edges = new List<Vector2Int>();
+    foreach (Slot s in m_slots)
     {
-      for (int j = 0; j < m_slots.GetLength(1); j++)
+      foreach (var item in s.neighbors)
       {
-        //Check if this slot is active
-        if (m_slots[i, j].GetActive() == false)
+        if (item.Value.x < 0 && item.Value.y < 0)
         {
-          //Skip if inactive
-          continue;
-        }
-
-        //Check the neighbors to see if any are inactive
-        bool edge = CheckForInactiveNeighbors(new Vector2Int(i, j));
-        if (edge)
-        {
-          activeEdgeSlots.Add(new Vector2Int(i, j));
-        }
-      }
-    }
-    return activeEdgeSlots;
-  }
-
-  private static bool CheckForInactiveNeighbors(Vector2Int coords)
-  {
-    Vector2Int[] neighborOffsets = neighborIdxToDirectionString.Keys.ToArray();
-
-    //Get the valid neighbors for the pieces next to our starting slot
-    for (int i = 0; i < neighborOffsets.Length; i++)
-    {
-      int x = neighborOffsets[i].x;
-      int y = neighborOffsets[i].y;
-
-      Vector2Int coordsPlusOffset = new Vector2Int(coords.x + x, coords.y + y);
-
-      if (coordsPlusOffset.x < 0 || coordsPlusOffset.x >= m_slots.GetLength(0))
-        return true;
-      else if (coordsPlusOffset.y < 0 || coordsPlusOffset.y >= m_slots.GetLength(1))
-        return true;
-      else if (m_slots[coordsPlusOffset.x, coordsPlusOffset.y].GetActive() == false)
-        return true;
-    }
-    return false;
-  }
-
-  private static bool CheckCollapsed()
-  {
-    for (int x = 0; x < m_slots.GetLength(0); x++)
-    {
-      for (int y = 0; y < m_slots.GetLength(1); y++)
-      {
-        //If any slot is NOT collapsed and is active then the function has not collapsed
-        if (m_slots[x, y].IsCollapsed() == false && m_slots[x, y].GetActive())
-        {
-          return false;
+          if (!edges.Contains(s.position))
+          {
+            edges.Add(s.position);
+            break;
+          }
         }
       }
     }
 
+    return edges;
+  }
+
+  private static bool CheckCollapsedStatus()
+  {
+    foreach(Slot s in m_slots)
+    {
+      if(s.IsCollapsed() == false)
+      {
+        return false;
+      }
+    }
     return true;
   }
 
+  private static Vector2Int GetMinimumEntropy()
+  {
+    int minimum = int.MaxValue;
+    Vector2Int minSlot = inactiveNeighbor;
+    foreach(Slot s in m_slots)
+    {
+      int thisEntropy = s.GetEntropy();
+      if (thisEntropy == -1)
+        continue;
+
+      if(thisEntropy < minimum)
+      {
+        minimum = thisEntropy;
+        minSlot = s.position;
+      }
+
+      else if(thisEntropy == minimum)
+      {
+        //Randomly decide between the two pieces when equal entropy
+        if(Randomness.Instance.RandomUniformFloat(0, 100) > 50.0f)
+        {
+          minimum = thisEntropy;
+          minSlot = s.position;
+        }
+      }
+    }
+
+    return minSlot;
+  }
+
+  private static void CacheNeighbors()
+  {
+    for(int x = 0; x < m_slots.GetLength(0); x++)
+    {
+      for(int y = 0; y < m_slots.GetLength(1); y++)
+      {
+        foreach(var item in directionToNeighborOffset)
+        {
+          Vector2Int neighborPosition = new Vector2Int(x, y) + item.Value;
+          Vector2Int thisNeighbor = inactiveNeighbor;
+
+          if(neighborPosition.x < 0 || neighborPosition.x >= m_slots.GetLength(0))
+          {
+            thisNeighbor = outOfBoundsNeighbor;
+          }
+          else if(neighborPosition.y < 0 || neighborPosition.y >= m_slots.GetLength(1))
+          {
+            thisNeighbor = outOfBoundsNeighbor;
+          }
+          else
+          {
+            if(m_slots[neighborPosition.x, neighborPosition.y].GetActive())
+            {
+              thisNeighbor = neighborPosition;
+            }
+            else
+            {
+              thisNeighbor = inactiveNeighbor;
+            }
+          }
+
+          m_slots[x, y].neighbors[item.Key] = thisNeighbor;
+        }
+      }
+    }
+  }
 }
