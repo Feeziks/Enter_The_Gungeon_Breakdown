@@ -19,9 +19,17 @@ public class MapManager : MonoBehaviour
   [SerializeField] private TMP_Dropdown difficultyInput;
 
   //Public methods
+  public void Start()
+  {
+    m_map = new Map("My_Map");
+  }
+
   public void GetNewMap()
   {
-    m_map = new Map("my_map");
+    if(m_map != null)
+    {
+      m_map.ClearMap();
+    }
     int level = UI_Conversions.UserInputToInt(levelInput);
     if (level < 0)
     {
@@ -29,7 +37,7 @@ public class MapManager : MonoBehaviour
       return;
     }
     int difficulty = difficultyInput.value;
-    m_map = MapGenerator.Instance.GenerateNewMap(level, difficulty);
+    MapGenerator.Instance.GenerateNewMap(level, difficulty, ref m_map);
   }
 
   //Private methods

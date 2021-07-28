@@ -81,7 +81,7 @@ public class Slot
 
     piece = p;
 
-    Debug.Log("Collapsed slot at position : " + position + " to piece: " + piece.name);
+    //Debug.Log("Collapsed slot at position : " + position + " to piece: " + piece.name);
 
     //Empty the piece set since we have decided what piece this will be
     validPieces.Clear();
@@ -116,7 +116,7 @@ public class Slot
       return success;
 
     success = true;
-    Debug.Log("Randomly Collapsed slot at position : " + position + " to piece: " + piece.name);
+    //Debug.Log("Randomly Collapsed slot at position : " + position + " to piece: " + piece.name);
 
 
     //Clear the valid piece list since we already picked our own piece

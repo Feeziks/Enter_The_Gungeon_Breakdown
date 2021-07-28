@@ -29,6 +29,10 @@ public class Map
 
   public void ClearMap()
   {
+    foreach(Room r in rooms)
+    {
+      GameObject.Destroy(r.container);
+    }
     rooms.Clear();
   }
 

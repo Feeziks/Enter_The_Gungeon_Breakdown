@@ -43,9 +43,12 @@ public class MapGenerator
   private float[] growthRates = new float[] { 0.1618f, 0.2427f, 0.3236f };
 
   //public methods
-  public Map GenerateNewMap(int level, int difficulty)
+  public void GenerateNewMap(int level, int difficulty, ref Map retMap)
   {
-    Map myMap = new Map(level + "_map");
+    if (retMap == null)
+    {
+      retMap = new Map(level + "_map");
+    }
 
     //Get a number of points for this map
     int totalPoints = CalculateMapPoints(level, difficulty);
@@ -75,14 +78,11 @@ public class MapGenerator
     //Generate rooms until we are out of points
     do
     {
-      Room thisRoom = RoomGenerator.Instance.GenerateRoom(level, difficulty, pieceSet, myMap.GetTransform());
-      myMap.AddRoom(thisRoom);
+      Room thisRoom = RoomGenerator.Instance.GenerateRoom(level, difficulty, pieceSet, retMap.GetTransform());
+      retMap.AddRoom(thisRoom);
       currPoints -= thisRoom.cost;
     }
     while (currPoints > 0);
-
-
-    return myMap;
   }
 
   //private methods

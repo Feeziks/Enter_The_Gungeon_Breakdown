@@ -1,9 +1,11 @@
 from PIL import Image
 import os
-import json
+from collections import OrderedDict
 
 grandParentPath = "..\\Resources\\RoomPieces\\"
 grandParentPathForwardSlash = "RoomPieces"
+
+directionToInverseDirection = OrderedDict([('N' , 'S'), ('NE' , 'SW'), ('E' , 'W'), ('SE' , 'NW'), ('S' , 'N'), ('SW' , 'NE'), ('W' , 'E'), ('NW' ,'SE')])
 
 def getAllFilesOfType(dir, fileType):
   ret = []
@@ -31,7 +33,7 @@ def seperateFilesByLevel(fileList):
   return ret
 
 def getPointsOfInterestInPhoto(pixels, width, height):
-  ret = []
+  ret = dict()
 
   w = width - 1
   h = height - 1
@@ -39,8 +41,8 @@ def getPointsOfInterestInPhoto(pixels, width, height):
   x = [width / 2, w,  w,          w,  width / 2,  0,  0,          0]
   y = [0,         0,  height / 2, h,  h,          h,  height / 2, 0]
 
-  for px, py in zip(x, y):
-    ret.append(pixels[px, py])
+  for i, direction in enumerate(directionToInverseDirection.keys()):
+    ret[direction] = pixels[x[i], y[i]]
 
   return ret
 
@@ -72,14 +74,11 @@ def buildValidNeighborsDict(pointsDict):
 
       for otherTile in pointsDict[level]:
         if otherTile is not thisTile:
-          #we have to iterate the list in the reverse direction so we check
-          #other tile south vs our north etc
           otherTilePoints = pointsDict[level][otherTile]
-          otherTilePoints.reverse()
 
-          for i, direction in enumerate(validNeighbors[level][thisTile].keys()):
-            if thisTilePoints[i] == otherTilePoints[i]:
-              validNeighbors[level][thisTile][direction].append(otherTile)
+          for direction, invDirection in directionToInverseDirection.items():
+            if thisTilePoints[direction] == otherTilePoints[invDirection]:
+               validNeighbors[level][thisTile][direction].append(otherTile)
 
   return validNeighbors
 

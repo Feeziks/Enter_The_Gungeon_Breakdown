@@ -148,17 +148,15 @@ public static class WaveFunctionCollapse
 
     //Loop over the slots neighbors and if the slot is inactive or out of bounds
     //Add its constraints on THIS slot
-
-    List<Piece> constraints = new List<Piece>();
+    bool success = true;
     foreach(var item in m_slots[pos.x, pos.y].neighbors)
     {
       if(item.Value == inactiveNeighbor || item.Value == outOfBoundsNeighbor)
       {
         string inverseDirection = directionToInverseDirection[item.Key];
-        constraints.AddRange(pieceSet[pieceSet.Count - 1].validNeighbors[inverseDirection]);
+        success &= m_slots[pos.x, pos.y].Constrain(pieceSet[pieceSet.Count - 1].validNeighbors[inverseDirection]);
       }
     }
-    bool success = m_slots[pos.x, pos.y].Constrain(constraints);
     return success;
   }
 
@@ -175,10 +173,8 @@ public static class WaveFunctionCollapse
       List<Piece> constraints = new List<Piece>();
       foreach(Piece p in m_slots[pos.x, pos.y].validPieces)
       {
-        constraints.AddRange(p.validNeighbors[item.Key]);
+        success &= m_slots[item.Value.x, item.Value.y].Constrain(p.validNeighbors[item.Key]);
       }
-
-      success &= m_slots[item.Value.x, item.Value.y].Constrain(constraints);
 
       if(!alreadyTouched.Contains(item.Value))
       {
